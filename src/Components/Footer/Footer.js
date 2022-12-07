@@ -20,6 +20,7 @@ h5{
     display: flex;
     justify-content: center;
     padding: 10px ;
+    margin-bottom: 0;
 }
 
 `
