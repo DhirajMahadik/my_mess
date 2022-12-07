@@ -31,32 +31,34 @@ const Home = () => {
 
             </div>
 
-            <div className="container d-flex  row g-3 py-3">
+            <div className="Container py-3">
                 <hr />
                 <h4>You can check following results</h4>
-                {messList.map((element) => {
-                    // return <Link className="Link" to={`/mess/${element._id}`} key={element._id}>
-                  return  <div className="card col-md-3"    >
-                    <Link className="Link" to={`/mess/${element._id}`} key={element._id}>
-                        <span style={{ color: "black", border: " solid 2px #fff" }} className="position-absolute top-3 start-100 translate-middle badge rounded-pill bg-warning">
-                            4.5
-                        </span>
+                <div className="row g-3">
+                    {messList.map((element) => {
+                        // return 
 
-                        <img src={element.photo} className="card-img-top" alt="..." />
-                        <div className="card-body">
-                            <h5 className="card-title">{element.name}</h5>
-                            <span className="card-text">{element.type}</span>
-                            <span>{element.open}</span>
-                            <span>{element.close}</span>
+                        return <div className="card col-md-4"    >
+                            <Link className="Link" to={`/mess/${element._id}`} key={element._id}>
+                            <span style={{ color: "black", border: " solid 2px #fff" }} className="position-absolute top-3 start-100 translate-middle badge rounded-pill bg-warning">
+                                4.5
+                            </span>
 
+                            <img src={element.photo} className="card-img-top" alt="..." />
+                            <div className="card-body">
+                                <h5 className="card-title">{element.name}</h5>
+                                <span className="card-text">{element.type}</span>
+                                <span>{element.open}</span>
+                                <span>{element.close}</span>
+
+                            </div>
+                            </Link>
                         </div>
-                        </Link>
-                    </div>
+                      
+                    })}
+                </div>
 
-                // </Link>
-                })}
 
-                
                 {/* 
                 <div className="card col-md-3 position-relative" >
                     <span style={{ color: "black", border: " solid 2px #fff" }} className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
@@ -181,8 +183,10 @@ background-color: #000;
         padding: 0;
     }
     
-    .container{
+    .Container{
         margin: auto;
+        padding: 20px;
+        height: 100vh
     }
 
     .card-text{
@@ -201,6 +205,7 @@ background-color: #000;
         text-align: center;
         color: #fff;
         font-weight: bold;
+        padding: 20px;
     }
 
     span{
