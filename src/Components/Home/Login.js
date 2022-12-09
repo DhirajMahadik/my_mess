@@ -92,7 +92,7 @@ h2{
 
     form{
         width: 100%;
-        margin: 0;
+        
     }
 }
 
