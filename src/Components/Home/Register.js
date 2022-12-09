@@ -123,7 +123,7 @@ export  const REGISTER_LOGIN = styled.div`
 display: flex;
 padding: 50px;
 background-color: #000;
-height: 100%;
+height: 100vh;
 
 button{
     margin: 20px auto;
