@@ -90,7 +90,7 @@ export default Home
 const HOME = styled.section`
 
 background-color: #000;
-height: 100vh;
+/* height: 100vh; */
     .Link{
         width: 100%;
         text-decoration: none;
@@ -114,7 +114,7 @@ height: 100vh;
     .Container{
         margin: auto;
         padding: 20px;
-        height: 100vh;
+        /* height: 100vh; */
         
     }
 
