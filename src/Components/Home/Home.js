@@ -13,10 +13,28 @@ const Home = () => {
         })
         let result = await data.json();
         setMessList(result)
-        console.log(result)
-
-
+        // console.log(result)
     }
+
+    const SearchHandler = async (e)=>{
+        let key = e.target.value;
+        console.log(key)
+        if(key){
+            let data = await fetch(`http://localhost:5000/search/${key}`, {method:"get"});
+            let res = await data.json();
+            console.log(res)
+            if(res){
+                setMessList(res)
+            }
+        }
+       
+        else{
+            GetData()
+        }
+       
+    }
+       
+    
 
     useEffect(() => {
         GetData()
@@ -26,7 +44,7 @@ const Home = () => {
         <HOME>
             <div>
                 <form>
-                    <input type="Text" className="form-control" placeholder="Search" />
+                    <input onChange={(e)=>SearchHandler(e)} type="Text" className="form-control" placeholder="Search" />
                 </form>
 
             </div>
@@ -35,129 +53,31 @@ const Home = () => {
                 <hr />
                 <h4>You can check following results</h4>
                 <div className="row g-3">
-                    {messList.map((element) => {
+                    {messList.length > 0 ? messList.map((element) => {
                         // return 
-
-                        return <div className="card col-md-4"    >
-                            <Link className="Link" to={`/mess/${element._id}`} key={element._id}>
-                            <span style={{ color: "black", border: " solid 2px #fff" }} className="position-absolute top-3 start-100 translate-middle badge rounded-pill bg-warning">
+                            return <div className="card col-md-4" key={element._id}    >
+                                <Link className="Link" to={`/mess/${element._id}`}>
+                                    {/* <span style={{ color: "black", border: " solid 2px #fff" }} className="position-absolute top-3 start-100 translate-middle badge rounded-pill bg-warning">
                                 4.5
-                            </span>
+                            </span> */}
 
-                            <img src={element.photo} className="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <h5 className="card-title">{element.name}</h5>
-                                <span className="card-text">{element.type}</span>
-                                <span>{element.open}</span>
-                                <span>{element.close}</span>
+                                    <img src={element.photo} className="card-img-top" alt="..." />
 
+                                    <div className="card-body">
+                                        <h5 className="card-title">{element.messname}</h5>
+                                        <span className="card-text">{element.type}</span>
+                                        <span>Open : {element.open}</span>
+                                        <span>Close : {element.close}</span>
+
+                                    </div>
+                                </Link>
                             </div>
-                            </Link>
-                        </div>
-                      
-                    })}
+                     
+
+                    }): <div className="container d-flex" style={{height:"100vh"}} >
+                            <h2 style={{textAlign:"center", margin:"auto"}}>No data found</h2>
+                     </div>}
                 </div>
-
-
-                {/* 
-                <div className="card col-md-3 position-relative" >
-                    <span style={{ color: "black", border: " solid 2px #fff" }} className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
-                        4.5
-                    </span>
-                    <img src="https://media.timeout.com/images/105825245/750/422/image.jpg" className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Sakshi Mess</h5>
-                        <span className="card-text"> Only Veg </span>
-                        <span>Open : 10 AM</span>
-                        <span>Close : 10 PM</span>
-                       
-                    </div>
-                </div>
-
-                <div className="card col-md-3" >
-                    <span style={{ color: "black", border: " solid 2px #fff" }} className="position-absolute top-3 start-100 translate-middle badge rounded-pill bg-warning">
-                        4.5
-                    </span>
-                    <img src="https://resdiaryportal.wpengine.com/wp-content/uploads/2022/02/lotus-double-bay-restaurant-360x240.jpeg" className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Shri Sai Mess</h5>
-                        <span className="card-text">Veg & Non-Veg</span>
-                        <span>Open : 10 AM</span>
-                        <span>Close : 10 PM</span>
-                        
-                    </div>
-                </div>
-
-                <div className="card col-md-3" >
-                    <span style={{ color: "black", border: " solid 2px #fff" }} className="position-absolute top-3 start-100 translate-middle badge rounded-pill bg-warning">
-                        4.5
-                    </span>
-                    <img src="https://media-cdn.tripadvisor.com/media/photo-s/1a/76/e1/6b/sand-wood.jpg" className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Panjabi Mess</h5>
-                        <span className="card-text">Veg & Non-Veg</span>
-                        <span>Open : 10 AM</span>
-                        <span>Close : 10 PM</span>
-                        
-                    </div>
-                </div>
-
-                <div className="card col-md-3" >
-                    <span style={{ color: "black", border: " solid 2px #fff" }} className="position-absolute top-3 start-100 translate-middle badge rounded-pill bg-warning">
-                        4.5
-                    </span>
-                    <img src="https://images.hindustantimes.com/img/2021/08/24/550x309/424047b8-f53b-11eb-a3e5-073c8ff4a6d2_1628092243522_1629837022818.jpg" className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">My Tiffin Mess</h5>
-                        <span className="card-text"> Only Veg </span>
-                        <span>Open : 10 AM</span>
-                        <span>Close : 10 PM</span>
-                       
-                    </div>
-                </div>
-
-                <div className="card col-md-3" >
-                    <span style={{ color: "black", border: " solid 2px #fff" }} className="position-absolute top-3 start-100 translate-middle badge rounded-pill bg-warning">
-                        4.5
-                    </span>
-                    <img src="https://resdiaryportal.wpengine.com/wp-content/uploads/2022/02/lotus-double-bay-restaurant-360x240.jpeg" className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">My Tiffin Mess</h5>
-                        <span className="card-text"> Only Veg </span>
-                        <span>Open : 10 AM</span>
-                        <span>Close : 10 PM</span>
-                       
-                    </div>
-                </div>
-
-                <div className="card col-md-3" >
-                    <span style={{ color: "black", border: " solid 2px #fff" }} className="position-absolute top-3 start-100 translate-middle badge rounded-pill bg-warning">
-                        4.5
-                    </span>
-                    <img src="https://images.hindustantimes.com/img/2021/08/24/550x309/424047b8-f53b-11eb-a3e5-073c8ff4a6d2_1628092243522_1629837022818.jpg" className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">My Tiffin Mess</h5>
-                        <span className="card-text"> Only Veg </span>
-                        <span>Open : 10 AM</span>
-                        <span>Close : 10 PM</span>
-                        
-                    </div>
-                </div>
-
-                <div className="card col-md-3" >
-                    <span style={{ color: "black", border: " solid 2px #fff" }} className="position-absolute top-3 start-100 translate-middle badge rounded-pill bg-warning">
-                        4.5
-                    </span>
-                    <img src="https://resdiaryportal.wpengine.com/wp-content/uploads/2022/02/lotus-double-bay-restaurant-360x240.jpeg" className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">My Tiffin Mess</h5>
-                        <span className="card-text"> Only Veg </span>
-                        <span>Open : 10 AM</span>
-                        <span>Close : 10 PM</span>
-                       
-                    </div>
-                </div> */}
-
 
             </div>
         </HOME>
@@ -170,7 +90,7 @@ export default Home
 const HOME = styled.section`
 
 background-color: #000;
-
+height: 100vh;
     .Link{
         width: 100%;
         text-decoration: none;
@@ -181,12 +101,21 @@ background-color: #000;
         width: 16rem;
         margin: 20px auto;
         padding: 0;
+        border-radius: 20px;
+    }
+
+    .card-body{
+        position: relative;
+        margin-top: 123px;
+        background-color: #e0e0e0;
+        border-radius: 40px 40px 20px 20px;
     }
     
     .Container{
         margin: auto;
         padding: 20px;
-        height: 100vh
+        height: 100vh;
+        
     }
 
     .card-text{
@@ -195,6 +124,8 @@ background-color: #000;
 
     img{
         height: 170px;
+        position: absolute;
+        border-radius: 20px;
     }
 
     hr{
@@ -220,6 +151,14 @@ background-color: #000;
 
     form input{
        height: 30px;
+    }
+
+    @media (max-width: 767px){
+    height: 100%;
+
+    .Container{
+        height: 100%;
+    }
     }
 
     

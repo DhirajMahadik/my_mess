@@ -6,6 +6,8 @@ import Navbar from './Components/Header/Navbar';
 import Home from './Components/Home/Home';
 import Mess from './Components/Home/Mess';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Register from './Components/Home/Register';
+import Login from './Components/Home/Login';
 
 
 function App() {
@@ -15,6 +17,10 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/mess/:id' element={<Mess />} />
+        <Route path='/register' element={<Register/>}/>
+        <Route path='/login' element={<Login/>}/>
+        
+       
       </Routes>
       <Footer />
     </BrowserRouter>

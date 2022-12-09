@@ -155,7 +155,7 @@ line-height: 2;
     return (
         <MESS>
             <section className='banner'>
-                <h3>{mess.name} </h3>
+                <h3>{mess.messname} </h3>
             </section>
 
             <section className='contact   '>
