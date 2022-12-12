@@ -8,7 +8,7 @@ const Home = () => {
 
     const GetData = async () => {
 
-        let data = await fetch('http://localhost:5000/messes', {
+        let data = await fetch('http://localhost:5000/', {
             method: "get"
         })
         let result = await data.json();

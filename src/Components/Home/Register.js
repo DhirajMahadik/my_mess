@@ -1,23 +1,30 @@
 import { useState } from "react"
 import styled from "styled-components"
-import {ArrowLeftCircleFill} from 'react-bootstrap-icons'
-import {useNavigate} from 'react-router-dom'
- 
+import { ArrowLeftCircleFill } from 'react-bootstrap-icons'
+import { useNavigate } from 'react-router-dom'
+
 const Register = () => {
 
     const Navigate = useNavigate()
-
+    const [Banner, setBanner] = useState();
     const [User, setUser] = useState({
         messname: "",
         type: "",
         address: "",
         location: "",
-        banner: "",
         phone: "",
         email: "",
         open: "",
         close: ""
     })
+
+
+
+    const onFileChangeHandler = (event) => {
+        let file = event.target.files[0];
+        setBanner(file);
+        console.log(file)
+    }
 
     const onchangeHandler = (e) => {
         let name = e.target.name;
@@ -28,18 +35,40 @@ const Register = () => {
 
     const OnsubmitHandler = async (e) => {
         e.preventDefault();
-        console.log(User)
+
+
+        // let formData = new FormData();
+        // formData.append('image', Banner)
+
+        // console.log(formData)
+        // let upload = await fetch('http://localhost:5000/add-image', {
+        //     method: "post",
+        //     body: formData,
+
+        // })
+        // let res = await upload
+        // console.log(res);
+        // console.log(User)
+        // console.log(Banner)
+
+        let formData = new FormData();
+        // formData.append('image', Banner )
+        formData.append(User)
+
         let data = await fetch('http://localhost:5000/add-mess', {
             method: "post",
-            body: JSON.stringify({ User }), headers: { "Content-Type": "application/json" }
+            // body: JSON.stringify({ User }), headers: { "Content-Type": "application/json" }
+            body: formData
         })
         let result = await data.json();
-        console.log(result)
+        console.log(result);
+
+        
 
     }
 
-    const backToHome =()=>{
-            Navigate('/')
+    const backToHome = () => {
+        Navigate('/')
     }
 
 
@@ -49,7 +78,7 @@ const Register = () => {
             <form onSubmit={OnsubmitHandler} className="row g-3">
                 <div className="col-md-12">
 
-                    <ArrowLeftCircleFill onClick={backToHome} style={{fontSize:"2rem"}}/>
+                    <ArrowLeftCircleFill onClick={backToHome} style={{ fontSize: "2rem" }} />
 
                 </div>
                 <div className="col-md-12">
@@ -81,7 +110,7 @@ const Register = () => {
                 </div>
                 <div className="col-md-4">
                     <label htmlFor="banner" className="form-label">Mess Banner</label>
-                    <input onChange={onchangeHandler} name="banner" value={User.banner} type="file" className="form-control" id="banner" />
+                    <input onChange={onFileChangeHandler} name="banner" type="file" className="form-control" id="banner" />
                 </div>
                 <div className="col-md-4">
                     <label htmlFor="phone" className="form-label">Phone no</label>
@@ -119,7 +148,7 @@ const Register = () => {
 
 export default Register
 
-export  const REGISTER_LOGIN = styled.div`
+export const REGISTER_LOGIN = styled.div`
 display: flex;
 padding: 50px;
 background-color: #000;
