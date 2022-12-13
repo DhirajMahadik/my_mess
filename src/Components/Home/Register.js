@@ -15,7 +15,8 @@ const Register = () => {
         phone: "",
         email: "",
         open: "",
-        close: ""
+        close: "",
+        photo:""
     })
 
 
@@ -36,34 +37,32 @@ const Register = () => {
     const OnsubmitHandler = async (e) => {
         e.preventDefault();
 
-
-        // let formData = new FormData();
-        // formData.append('image', Banner)
-
-        // console.log(formData)
-        // let upload = await fetch('http://localhost:5000/add-image', {
-        //     method: "post",
-        //     body: formData,
-
-        // })
-        // let res = await upload
-        // console.log(res);
-        // console.log(User)
-        // console.log(Banner)
-
         let formData = new FormData();
-        // formData.append('image', Banner )
-        formData.append(User)
-
-        let data = await fetch('http://localhost:5000/add-mess', {
-            method: "post",
-            // body: JSON.stringify({ User }), headers: { "Content-Type": "application/json" }
+        formData.append('image',Banner);
+        for(let key of Object.keys(User)){
+            formData.append(key, User[key]);
+        }
+            await fetch('http://localhost:5000/add-mess',{
+            method: 'POST',
             body: formData
+        }).then((res)=>{
+            if(res.status === 200){
+                console.log("Registered Successfully")
+            }else if(res.status===400){
+                    console.log("Email Already exist")
+            }
+        }).catch((err)=>{
+            // console.log("Email already exist")
+            console.log(err)
         })
-        let result = await data.json();
-        console.log(result);
-
-        
+        // let res = await data.json()
+        // console.log(res)
+        // } catch  (error) {
+        //    let err = await error.json()
+        //    console.log(err)
+        // }
+       
+      
 
     }
 
