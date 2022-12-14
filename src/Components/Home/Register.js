@@ -16,7 +16,7 @@ const Register = () => {
         email: "",
         open: "",
         close: "",
-        photo:""
+       
     })
 
 
@@ -38,7 +38,7 @@ const Register = () => {
         e.preventDefault();
 
         let formData = new FormData();
-        formData.append('image',Banner);
+        formData.append('ima    ge',Banner);
         for(let key of Object.keys(User)){
             formData.append(key, User[key]);
         }
@@ -87,12 +87,11 @@ const Register = () => {
                 </div>
                 <div className="col-md-6">
                     <label htmlFor="name" className="form-label">Name of your mess</label>
-                    <input onChange={onchangeHandler} name="messname" value={User.messname} type="text" className="form-control" id="name" placeholder="Enter name here" />
+                    <input required onChange={onchangeHandler} name="messname" value={User.messname} type="text" className="form-control" id="name" placeholder="Enter name here" />
                 </div>
                 <div className="col-md-6">
                     <label htmlFor="type" className="form-label">Type</label>
-                    <select onChange={onchangeHandler} name="type" value={User.type} id="type" className="form-select">
-                        <option  >Choose</option>
+                    <select  required onChange={onchangeHandler} name="type" value={User.type} id="type" className="form-select">
                         <option value={"Veg/Non-Veg"}>Veg / Non-veg</option>
                         <option value={" Only Veg"}>Only Veg</option>
                         <option value={" Only Non-Veg"}>Only Non-Veg</option>
@@ -101,30 +100,30 @@ const Register = () => {
 
                 <div className="col-12">
                     <label htmlFor="inputAddress" className="form-label">Address</label>
-                    <input onChange={onchangeHandler} name="address" value={User.address} type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
+                    <input required onChange={onchangeHandler} name="address" value={User.address} type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
                 </div>
                 <div className="col-12">
                     <label htmlFor="location" className="form-label">Location URL</label>
-                    <input onChange={onchangeHandler} name="location" value={User.location} type="text" className="form-control" id="location" placeholder="Google map link etc" />
+                    <input required onChange={onchangeHandler} name="location" value={User.location} type="text" className="form-control" id="location" placeholder="Google map link etc" />
                 </div>
                 <div className="col-md-4">
                     <label htmlFor="banner" className="form-label">Mess Banner</label>
-                    <input onChange={onFileChangeHandler} name="banner" type="file" className="form-control" id="banner" />
+                    <input required onChange={onFileChangeHandler} name="banner" type="file" className="form-control" id="banner" />
                 </div>
                 <div className="col-md-4">
                     <label htmlFor="phone" className="form-label">Phone no</label>
-                    <input onChange={onchangeHandler} name="phone" value={User.phone} type="text" className="form-control" id="phone" placeholder="Enter phone no" />
+                    <input required onChange={onchangeHandler} name="phone" value={User.phone} type="text" className="form-control" id="phone" placeholder="Enter phone no" />
                 </div>
                 <div className="col-md-4">
                     <label htmlFor="email" className="form-label">Email</label>
-                    <input onChange={onchangeHandler} name="email" value={User.email} type="email" className="form-control" id="email" placeholder="Enter email" />
+                    <input required onChange={onchangeHandler} name="email" value={User.email} type="email" className="form-control" id="email" placeholder="Enter email" />
                 </div>
                 <div className="col-4">
 
                     <label className="form-label" htmlFor="openTime">
                         Mess open at
                     </label>
-                    <input onChange={onchangeHandler} name="open" value={User.open} className="form-control" type="time" id="openTime" />
+                    <input required onChange={onchangeHandler} name="open" value={User.open} className="form-control" type="time" id="openTime" />
 
                 </div>
 
