@@ -148,7 +148,7 @@ export default Register
 
 export const REGISTER_LOGIN = styled.div`
 display: flex;
-padding: 50px;
+padding: 20px;
 background-color: #000;
 /* height: 100vh; */
 
