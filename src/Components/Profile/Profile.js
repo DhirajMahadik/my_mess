@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import IMG from '../../dhirajHomepage.PNG'
+// import IMG from '../../dhirajHomepage.PNG'
 import { PencilSquare } from 'react-bootstrap-icons'
 
 const Profile = () => {
@@ -115,7 +115,7 @@ const Profile = () => {
                         <div class="card " style={{ width: "18rem" }}>
                             <img src="https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020" class="card-img-top" alt="..." />
                             <div class="card-body position-absulute">
-                                <a href="#" class="btn btn-sm btn-danger">remove</a>
+                                <a href="/" class="btn btn-sm btn-danger">remove</a>
                             </div>
                         </div>
                     </div>
@@ -124,7 +124,7 @@ const Profile = () => {
                         <div class="card " style={{ width: "18rem" }}>
                             <img src="https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020" class="card-img-top" alt="..." />
                             <div class="card-body position-absulute">
-                                <a href="#" class="btn btn-sm btn-danger">remove</a>
+                                <a href="/" class="btn btn-sm btn-danger">remove</a>
                             </div>
                         </div>
                     </div>
@@ -133,7 +133,7 @@ const Profile = () => {
                         <div class="card " style={{ width: "18rem" }}>
                             <img src="https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020" class="card-img-top" alt="..." />
                             <div class="card-body position-absulute">
-                                <a href="#" class="btn btn-sm btn-danger">remove</a>
+                                <a href="/" class="btn btn-sm btn-danger">remove</a>
                             </div>
                         </div>
                     </div>
@@ -142,7 +142,7 @@ const Profile = () => {
                         <div class="card " style={{ width: "18rem" }}>
                             <img src="https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020" class="card-img-top" alt="..." />
                             <div class="card-body position-absulute">
-                                <a href="#" class="btn btn-sm btn-danger">remove</a>
+                                <a href="/" class="btn btn-sm btn-danger">remove</a>
                             </div>
                         </div>
                     </div>
@@ -151,7 +151,7 @@ const Profile = () => {
                         <div class="card " style={{ width: "18rem" }}>
                             <img src="https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020" class="card-img-top" alt="..." />
                             <div class="card-body position-absulute">
-                                <a href="#" class="btn btn-sm btn-danger">remove</a>
+                                <a href="/" class="btn btn-sm btn-danger">remove</a>
                             </div>
                         </div>
                     </div>
@@ -160,7 +160,7 @@ const Profile = () => {
                         <div class="card " style={{ width: "18rem" }}>
                             <img src="https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020" class="card-img-top" alt="..." />
                             <div class="card-body position-absulute">
-                                <a href="#" class="btn btn-sm btn-danger">remove</a>
+                                <a href="/" class="btn btn-sm btn-danger">remove</a>
                             </div>
                         </div>
                     </div>

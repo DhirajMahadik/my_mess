@@ -44,7 +44,7 @@ const Home = () => {
         <HOME>
             <div>
                 <form>
-                <marquee style={{color:"#fff"}}>Search anything</marquee>
+                {/* <marquee style={{color:"#fff"}}>Search anything</marquee> */}
                     <input onChange={(e)=>SearchHandler(e)} type="Text" className="form-control" placeholder="Search" />
                   
                 </form>
