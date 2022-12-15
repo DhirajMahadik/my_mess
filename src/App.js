@@ -8,6 +8,7 @@ import Mess from './Components/Home/Mess';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Register from './Components/Home/Register';
 import Login from './Components/Home/Login';
+import Profile from './Components/Profile/Profile';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path='/mess/:id' element={<Mess />} />
         <Route path='/register' element={<Register/>}/>
         <Route path='/login' element={<Login/>}/>
+        <Route path='/profile' element={<Profile/>}/>
         
        
       </Routes>

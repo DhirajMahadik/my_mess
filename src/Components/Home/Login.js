@@ -1,21 +1,51 @@
+import { useState } from "react"
 import styled from "styled-components"
+import { useNavigate } from "react-router-dom"
 
 const Login = () => {
+
+    const Navigate = useNavigate();
+    const [user, setUser] = useState({email:"", password:""})
+
+    const onchangeHandler =(e)=>{
+        let name = e.target.name;
+        let value = e.target.value
+
+        setUser({...user, [name]:value})
+    }
+
+    const UserLogin =(e)=>{
+        e.preventDefault();
+       
+        fetch('http://localhost:5000/login', {method:"POST" , body: JSON.stringify(user) , headers: {
+            'Content-Type': 'application/json'
+            }
+         }).then((res)=>{
+            console.log(res)
+            if(res.status === 200){
+                Navigate('/profile')
+            }
+            else{
+                alert("Enter valid login credential")
+            }
+        })
+    }
+
 
     return (
         <LOGIN>
 
-            <form className="col g-3">
+            <form onSubmit={UserLogin} className="col g-3">
             <div class="col-md-6">
             <h2>Login</h2>
                 </div>
                 <div class="col-md-6">
                     <label for="InputEmail" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter your email" />
+                    <input onChange={onchangeHandler} value={user.email} name="email" type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter your email" />
                 </div>
                 <div class="col-md-6">
                     <label for="Password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="Password" placeholder="Enter your password" />
+                    <input onChange={onchangeHandler} value={user.password} name="password" type="password" class="form-control" id="Password" placeholder="Enter your password" />
                 </div>
                 <div class="col-md-6">
                 <button type="submit" class="btn btn-sm btn-outline-warning">Login</button>
@@ -34,6 +64,7 @@ const LOGIN = styled.div`
 background-color: #000;
 height: 100vh;
 display: grid;
+padding: 10px;
 
 button{
     margin: 20px auto;

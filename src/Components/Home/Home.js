@@ -44,24 +44,28 @@ const Home = () => {
         <HOME>
             <div>
                 <form>
+                <marquee style={{color:"#fff"}}>Search anything</marquee>
                     <input onChange={(e)=>SearchHandler(e)} type="Text" className="form-control" placeholder="Search" />
+                  
                 </form>
 
             </div>
 
-            <div className="Container py-3">
+            <div className="container py-3">
                 <hr />
                 <h4>You can check following results</h4>
                 <div className="row g-3">
                     {messList.length > 0 ? messList.map((element) => {
                         // return 
-                            return <div className="card col-md-4" key={element._id}    >
-                                <Link className="Link" to={`/mess/${element._id}`}>
+                            return <div className="col-md-4">
+                                <div className="card " key={element._id}    >
+                                <Link className="Link  " to={`/mess/${element._id}`}>
                                     {/* <span style={{ color: "black", border: " solid 2px #fff" }} className="position-absolute top-3 start-100 translate-middle badge rounded-pill bg-warning">
                                 4.5
                             </span> */}
 
-                                    <img src={element.photo} className="card-img-top" alt="..." />
+                                    <img src={element.photo ? element.photo : "https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020" } className="card-img-top" alt="..." />
+                                    {/* <img src="https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020"  className="card-img-top" alt="..." />  */}
 
                                     <div className="card-body">
                                         <h5 className="card-title">{element.messname}</h5>
@@ -72,6 +76,8 @@ const Home = () => {
                                     </div>
                                 </Link>
                             </div>
+                            </div>
+                            
                      
 
                     }): <div className="container d-flex" style={{height:"100vh"}} >
@@ -98,7 +104,7 @@ background-color: #000;
     }
 
     .card{
-        width: 16rem;
+        width: 18rem;
         margin: 20px auto;
         padding: 0;
         border-radius: 20px;
@@ -111,7 +117,7 @@ background-color: #000;
         border-radius: 40px 40px 20px 20px;
     }
     
-    .Container{
+    .container{
         margin: auto;
         padding: 20px;
         /* height: 100vh; */
