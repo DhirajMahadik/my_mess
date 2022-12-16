@@ -297,6 +297,10 @@ background-color: aliceblue;
     flex-direction: column;
 }
 
+.image input{
+    border-radius: 20px;
+    color: #fff;
+}
 
 .image label{
     font-size: 2rem;
