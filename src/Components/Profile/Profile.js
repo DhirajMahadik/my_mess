@@ -13,7 +13,7 @@ const Profile = () => {
                     {/* <img className="py-3" src="https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020" alt="" /> */}
                     <form>
                         <label htmlFor="banner" >Update your mess banner...</label>
-                        <input className="form-control my-2" id="banner" type="file" />
+                        <input className=" my-2" id="banner" type="file" />
                         <button  type="button" className="btn btn-sm btn-warning">Update</button>
                     </form>
                 </div>
@@ -293,6 +293,8 @@ background-color: aliceblue;
     background-color: rgba(0 0 0/50%);
     padding: 15px;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 
