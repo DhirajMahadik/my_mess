@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import {GeoAltFill} from 'react-bootstrap-icons'
 
 const Home = () => {
 
@@ -42,17 +43,18 @@ const Home = () => {
 
     return (
         <HOME>
-            <div>
+            <div className="Flex">
+    
                 <form>
-                {/* <marquee style={{color:"#fff"}}>Search anything</marquee> */}
-                    <input onChange={(e)=>SearchHandler(e)} type="Text" className="form-control" placeholder="Search" />
+                    <h1>My<span>MESS</span></h1>
+                    <input onChange={(e)=>SearchHandler(e)} type="Text" className="form-control" placeholder="Search by location" />
                   
                 </form>
 
             </div>
 
             <div className="container py-3">
-                <hr />
+                {/* <hr /> */}
                 <h4>You can check following results</h4>
                 <div className="row g-3">
                     {messList.length > 0 ? messList.map((element) => {
@@ -72,6 +74,7 @@ const Home = () => {
                                         <span className="card-text">{element.type}</span>
                                         <span>Open : {element.open}</span>
                                         <span>Close : {element.close}</span>
+                                        <span> <GeoAltFill/> {element.address}</span>
 
                                     </div>
                                 </Link>
@@ -103,18 +106,50 @@ background-color: #000;
         color: #000;
     }
 
+    .Flex{
+        background-image: url("https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 300px;
+        display: flex;
+    }
+
+    .Flex form{
+        margin: auto;
+        input{
+            padding: 15px 100px;
+        }
+    }
+
+    .Flex span{
+        color: red;
+    }
+
+    .Flex form h1{
+        font-size: 3rem;
+        color: #fff;
+        font-weight: 900;
+        font-style: italic;
+        padding: 20px 0 20px 0;
+        display: flex;
+        justify-content: center;
+        text-shadow: 2px 2px 2px  #000;
+    }
+
     .card{
         width: 18rem;
         margin: 20px auto;
         padding: 0;
-        border-radius: 20px;
+        border-radius: 50px 0;
+        /* border: none; */
     }
 
     .card-body{
         position: relative;
         margin-top: 123px;
         background-color: #e0e0e0;
-        border-radius: 40px 40px 20px 20px;
+        border-radius: 50px 0px 50px 0px;
     }
     
     .container{
@@ -131,7 +166,7 @@ background-color: #000;
     img{
         height: 170px;
         position: absolute;
-        border-radius: 20px;
+        border-radius: 50px 0 0 0;
     }
 
     hr{
@@ -149,11 +184,11 @@ background-color: #000;
         display: block;
     }
 
-    form{
+    /* form{
         width: fit-content;
         padding-top: 30px;
         margin: auto;
-    }
+    } */
 
     form input{
        height: 30px;

@@ -40,6 +40,12 @@ span{
   font-weight: 700;
 }
 
+.navbar-brand{
+  font-style: italic;
+  font-weight: 900;
+  margin-left: 20px;
+}
+
 .navbar-toggler{
   border: none;
 }

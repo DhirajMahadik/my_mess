@@ -13,7 +13,7 @@ export default Footer;
 const FOOTER = styled.footer`
 padding: 0;
 margin: 0;
-background-color: #343a40;
+background-color: darkgray;
 bottom: 0;
 
 h5{
