@@ -16,19 +16,19 @@ const Login = () => {
 
     const UserLogin =(e)=>{
         e.preventDefault();
-       
-        fetch('http://localhost:5000/login', {method:"POST" , body: JSON.stringify(user) , headers: {
-            'Content-Type': 'application/json'
-            }
-         }).then((res)=>{
-            console.log(res)
-            if(res.status === 200){
-                Navigate('/profile')
-            }
-            else{
-                alert("Enter valid login credential")
-            }
-        })
+        Navigate('/profile')
+        // fetch('http://localhost:5000/login', {method:"POST" , body: JSON.stringify(user) , headers: {
+        //     'Content-Type': 'application/json'
+        //     }
+        //  }).then((res)=>{
+        //     console.log(res)
+        //     if(res.status === 200){
+        //         Navigate('/profile')
+        //     }
+        //     else{
+        //         alert("Enter valid login credential")
+        //     }
+        // })
     }
 
 
