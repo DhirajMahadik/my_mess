@@ -290,6 +290,9 @@ background-color: aliceblue;
     /* width: 500px; */
     margin: auto;
     text-align: center;
+    background-color: rgba(0 0 0/50%);
+    padding: 15px;
+    border-radius: 20px;
 }
 
 
