@@ -4,7 +4,7 @@ import styled from "styled-components"
 const Navbar = () => {
   return (
     <Header>
-        <nav className="navbar navbar-dark navbar-expand-lg bg-dark">
+        <nav className="navbar position-sticky navbar-dark navbar-expand-lg bg-dark">
   <div className="container-fluid">
     <Link className="navbar-brand" to="/">My<span>Mess</span></Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,6 +35,8 @@ const Navbar = () => {
 export default Navbar
 
 const Header = styled.header`
+
+
 span{
   color: red;
   font-weight: 700;

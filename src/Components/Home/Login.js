@@ -1,34 +1,48 @@
 import { useState } from "react"
 import styled from "styled-components"
 import { useNavigate } from "react-router-dom"
+import { ToastContainer, toast } from 'react-toastify'
 
 const Login = () => {
 
-    const Navigate = useNavigate();
-    const [user, setUser] = useState({email:"", password:""})
+    const Toastoptions= {
+        position:"top-center",
+        autoClose: 6000,
+        pauseOnHover: true,
+        draggable:true,
+        theme :"dark"
 
-    const onchangeHandler =(e)=>{
+    };
+
+    const Navigate = useNavigate();
+    const [user, setUser] = useState({ email: "", password: "" })
+
+    const onchangeHandler = (e) => {
         let name = e.target.name;
         let value = e.target.value
 
-        setUser({...user, [name]:value})
+        setUser({ ...user, [name]: value })
     }
 
-    const UserLogin =(e)=>{
+    const UserLogin = (e) => {
         e.preventDefault();
-        Navigate('/profile')
-        // fetch('http://localhost:5000/login', {method:"POST" , body: JSON.stringify(user) , headers: {
-        //     'Content-Type': 'application/json'
-        //     }
-        //  }).then((res)=>{
-        //     console.log(res)
-        //     if(res.status === 200){
-        //         Navigate('/profile')
-        //     }
-        //     else{
-        //         alert("Enter valid login credential")
-        //     }
-        // })
+        
+        fetch('http://localhost:5000/login', {method:"POST" , body: JSON.stringify(user) , headers: {
+            'Content-Type': 'application/json'
+            }
+         }).then((res)=>{
+            console.log(res)
+            if(res.status === 200){
+                Navigate('/profile')
+                toast.success("Login successfull", Toastoptions)
+            }
+            else{
+                // alert("Enter valid login credential")
+                toast.error("Enter valid login credential", Toastoptions)
+            }
+        }).catch((err)=>{
+            toast.error("Something went wrong", Toastoptions)
+        })
     }
 
 
@@ -36,8 +50,8 @@ const Login = () => {
         <LOGIN>
 
             <form onSubmit={UserLogin} className="col g-3">
-            <div class="col-md-6">
-            <h2>Login</h2>
+                <div class="col-md-6">
+                    <h2>Login</h2>
                 </div>
                 <div class="col-md-6">
                     <label for="InputEmail" class="form-label">Email address</label>
@@ -48,11 +62,11 @@ const Login = () => {
                     <input onChange={onchangeHandler} value={user.password} name="password" type="password" class="form-control" id="Password" placeholder="Enter your password" />
                 </div>
                 <div class="col-md-6">
-                <button type="submit" class="btn btn-sm btn-outline-warning">Login</button>
+                    <button type="submit" class="btn btn-sm btn-outline-warning">Login</button>
                 </div>
-                
-            </form>
 
+            </form>
+            <ToastContainer />
         </LOGIN>
     )
 }

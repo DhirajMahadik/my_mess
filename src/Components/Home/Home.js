@@ -1,11 +1,12 @@
 import styled from "styled-components"
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import {GeoAltFill} from 'react-bootstrap-icons'
+import { GeoAltFill } from 'react-bootstrap-icons'
 
 const Home = () => {
 
     const [messList, setMessList] = useState([])
+    console.log(messList.image)
 
     const GetData = async () => {
 
@@ -17,25 +18,32 @@ const Home = () => {
         // console.log(result)
     }
 
-    const SearchHandler = async (e)=>{
+    const SearchHandler = async (e) => {
         let key = e.target.value;
         console.log(key)
-        if(key){
-            let data = await fetch(`http://localhost:5000/search/${key}`, {method:"get"});
+        if (key) {
+            let data = await fetch(`http://localhost:5000/search/${key}`, { method: "get" });
             let res = await data.json();
             console.log(res)
-            if(res){
+            if (res) {
                 setMessList(res)
             }
         }
-       
-        else{
+
+        else {
             GetData()
         }
-       
+
     }
-       
-    
+
+    const DeleteCard = async (id) => {
+        console.log(id)
+        let data = await fetch(`http://localhost:5000/delete/${id}`, { method: "delete" })
+        let res = await data.json()
+        console.log(res)
+        GetData()
+    }
+
 
     useEffect(() => {
         GetData()
@@ -44,11 +52,11 @@ const Home = () => {
     return (
         <HOME>
             <div className="Flex">
-    
+
                 <form>
                     <h1>My<span>MESS</span></h1>
-                    <input onChange={(e)=>SearchHandler(e)} type="Text" className="form-control" placeholder="Search by location" />
-                  
+                    <input onChange={(e) => SearchHandler(e)} type="Text" className="form-control" placeholder="Search by location" />
+
                 </form>
 
             </div>
@@ -58,34 +66,41 @@ const Home = () => {
                 <h4>You can check following results</h4>
                 <div className="row g-3">
                     {messList.length > 0 ? messList.map((element) => {
-                        // return 
-                            return <div className="col-md-4">
-                                <div className="card " key={element._id}    >
-                                <Link className="Link  " to={`/mess/${element._id}`}>
-                                    {/* <span style={{ color: "black", border: " solid 2px #fff" }} className="position-absolute top-3 start-100 translate-middle badge rounded-pill bg-warning">
+                        console.log(element)
+
+                        // let image;
+
+                    
+
+
+                    // return 
+                    return <div className="col-md-4">
+                        <div className="card " key={element._id}    >
+                            <Link className="Link  " to={`/mess/${element._id}`}>
+                                {/* <span style={{ color: "black", border: " solid 2px #fff" }} className="position-absolute top-3 start-100 translate-middle badge rounded-pill bg-warning">
                                 4.5
                             </span> */}
 
-                                    <img src={element.photo ? element.photo : "https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020" } className="card-img-top" alt="..." />
-                                    {/* <img src="https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020"  className="card-img-top" alt="..." />  */}
+                                {/* <img src={element.image ? element.image : "https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020"} className="card-img-top" alt="..." /> */}
+                                <img src={`http://localhost:5000/imgs/${element.image}`}  className="card-img-top" alt="..." /> 
 
-                                    <div className="card-body">
-                                        <h5 className="card-title">{element.messname}</h5>
-                                        <span className="card-text">{element.type}</span>
-                                        <span>Open : {element.open}</span>
-                                        <span>Close : {element.close}</span>
-                                        <span> <GeoAltFill/> {element.address}</span>
-
-                                    </div>
-                                </Link>
-                            </div>
-                            </div>
+                                <div className="card-body">
+                                    <h5 className="card-title">{element.messname}</h5>
+                                    <span className="card-text">{element.type}</span>
+                                    <span>Open : {element.open}</span>
+                                    <span>Close : {element.close}</span>
+                                    <span> <GeoAltFill /> {element.address}</span>
+                                </div>
+                            </Link>
+                            <button onClick={() => DeleteCard(element._id)} className="btn btn-danger btn-sm">delete</button>
+                        </div>
+                    </div>
                             
                      
 
-                    }): <div className="container d-flex" style={{height:"100vh"}} >
-                            <h2 style={{textAlign:"center", margin:"auto"}}>No data found</h2>
-                     </div>}
+                    }): <div className="container d-flex" style={{ height: "100vh" }} >
+                        <h2 style={{ textAlign: "center", margin: "auto" }}>No data found</h2>
+                    </div>}
                 </div>
 
             </div>
@@ -138,10 +153,11 @@ background-color: #000;
     }
 
     .card{
-        width: 18rem;
+        /* width: 18rem; */
         margin: 20px auto;
         padding: 0;
         border-radius: 50px 0;
+        background-color: #e0e0e0;
         /* border: none; */
     }
 
