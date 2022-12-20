@@ -30,18 +30,32 @@ const Login = () => {
         fetch('http://localhost:5000/login', {method:"POST" , body: JSON.stringify(user) , headers: {
             'Content-Type': 'application/json'
             }
+        
          }).then((res)=>{
-            console.log(res)
-            if(res.status === 200){
-                Navigate('/profile')
-                toast.success("Login successfull", Toastoptions)
-            }
-            else{
-                // alert("Enter valid login credential")
+            if(res.status===400){
                 toast.error("Enter valid login credential", Toastoptions)
+                return
+            }else{
+                return res.json();
             }
-        }).catch((err)=>{
-            toast.error("Something went wrong", Toastoptions)
+               
+         })
+         .then((res)=>{
+            const token = res;
+            console.log(res)
+            if(res){
+                localStorage.setItem("auth_token", JSON.stringify(token))
+                toast.success("Login successfull", Toastoptions)
+                Navigate('/profile')
+            } else{
+                return
+            }
+
+           
+        })
+        .catch((err)=>{
+            console.log()
+            toast.error(err.message, Toastoptions)
         })
     }
 
