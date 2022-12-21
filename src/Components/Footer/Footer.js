@@ -3,7 +3,7 @@ import styled from "styled-components"
 const Footer = () =>{
     return(
         <FOOTER>
-        <h5>All right reserved</h5>
+        <h6>Copyright © 2022 mymess.com</h6>
         </FOOTER>
     )
 }
@@ -16,7 +16,7 @@ margin: 0;
 background-color: darkgray;
 bottom: 0;
 
-h5{
+h6{
     display: flex;
     justify-content: center;
     padding: 10px ;

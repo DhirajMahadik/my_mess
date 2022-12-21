@@ -57,6 +57,9 @@ const Register = () => {
             if (res.status === 200) {
                 console.log("Registered Successfully")
                 toast.success("Registered Successfully" ,Toastoptions);
+                setTimeout(()=>{
+                    Navigate('/login')
+                },5000)
             } else if (res.status === 400) {
                 console.log("Email Already exist")
                 toast.error("Email Already exist." ,Toastoptions);

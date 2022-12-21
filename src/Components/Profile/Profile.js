@@ -1,32 +1,52 @@
 import styled from "styled-components";
-// import IMG from '../../dhirajHomepage.PNG'
 import { PencilSquare } from 'react-bootstrap-icons'
 import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify'
+
 
 
 const Profile = () => {
 
+    const navigate = useNavigate()
     const [user, setUser] = useState({})
-
 
     const onChangeHandler = () => {
 
     }
 
-    const getProfile = () => {
-        let auth_token = localStorage.getItem('auth_token')
-        let token_key = JSON.parse(auth_token)
-        console.log(token_key.token)
+    const Toastoptions= {
+        position:"top-center",
+        autoClose: 6000,
+        pauseOnHover: true,
+        draggable:true,
+        theme :"dark"
 
-        fetch('http://localhost:5000/profile', {
-            method: "GET", headers: {
-                "authorization": "Bearer " + token_key.token
-            }
-        }).then((res) => {
-            return res.json()
-        }).then((res1) => {
-            setUser(res1.data)
-        })
+    };
+
+    const getProfile = () => {
+
+        let auth_token = localStorage.getItem('auth_token')
+
+        if (auth_token) {
+            let token_key = JSON.parse(auth_token)
+            console.log(token_key.token)
+
+            fetch('http://localhost:5000/profile', {
+                method: "GET", headers: {
+                    "authorization": "Bearer " + token_key.token
+                }
+            }).then((res) => {
+                return res.json()
+            }).then((res1) => {
+                setUser(res1)
+               
+            })
+        } else {
+            navigate('/login')
+        }
+
+
     }
     console.log(user)
 
@@ -36,14 +56,14 @@ const Profile = () => {
         // eslint-disable-next-line
     }, [])
 
-    // const image_style ={
-    //     backgroundColor:  `url(${`http://localhost:5000/imgs/${user.image}`})`
-    // }
+    const image_style = {
+        backgroundImage: `url(${`http://localhost:5000/imgs/${user.image}`})`
+    }
 
     return (
         <PROFILE>
             <div className="container">
-                <div className="image py-3" >
+                <div className="image py-3" style={image_style} >
                     {/* <img className="py-3" src="https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020" alt="" /> */}
                     <form>
                         <label htmlFor="banner" >Update your mess banner...</label>
@@ -73,7 +93,7 @@ const Profile = () => {
                                         <div className="col-md-6">
                                             <label htmlFor="type" className="form-label">Type</label>
                                             <select required onChange={onChangeHandler} name="type" value={""} id="type" className="form-select">
-                                                <option  value={"Veg/Non-Veg"}>Veg / Non-veg</option>
+                                                <option value={"Veg/Non-Veg"}>Veg / Non-veg</option>
                                                 <option value={" Only Veg"}>Only Veg</option>
                                                 <option value={" Only Non-Veg"}>Only Non-Veg</option>
                                             </select>
@@ -133,7 +153,7 @@ const Profile = () => {
                     <hr />
                     <div className="col-md-6">
                         <h4> Mess name </h4>
-                        <p>{user.messname  }</p>
+                        <p>{user.messname}</p>
                     </div>
                     <div className="col-md-6">
                         <h4> Type </h4>
@@ -165,7 +185,7 @@ const Profile = () => {
                     </div>
 
                     <div className="col-md-6">
-                        <h4> Mess open at  </h4>
+                        <h4> Mess close at  </h4>
                         <p>{user.close}</p>
                     </div>
                     <hr />
@@ -188,7 +208,14 @@ const Profile = () => {
                     </div>
 
                     <div className="col-md-3">
-                        Dinner time <input className="form-control" onChange={onChangeHandler}  type="" name="" value="" placeholder="eg. 7 pm to 10 pm" />
+                        Dinner time <input className="form-control" onChange={onChangeHandler} type="" name="" value="" placeholder="eg. 7 pm to 10 pm" />
+                    </div>
+                    <div className="col-md-3">
+                        Lunch Price <input className="form-control" onChange={onChangeHandler} type="" name="" value="" placeholder="" />
+                    </div>
+
+                    <div className="col-md-3">
+                        Dinner Price <input className="form-control" onChange={onChangeHandler} type="" name="" value="" placeholder="" />
                     </div>
 
                     <hr />
@@ -198,7 +225,12 @@ const Profile = () => {
                     </div>
 
                     <div className="col-md-3">
+                        <label className="form-controlo">Lunch menu</label>
+                        <textarea className="form-control" rows="" cols="" placeholder=" please update it on daily basis Eg. bhaji , chapati ect" />
+                    </div>
 
+                    <div className="col-md-3">
+                        <label className="form-controlo">Dinner menu</label>
                         <textarea className="form-control" rows="" cols="" placeholder=" please update it on daily basis Eg. bhaji , chapati ect" />
                     </div>
 
@@ -281,7 +313,7 @@ const Profile = () => {
                 </div>
 
             </div>
-
+            <ToastContainer />
         </PROFILE>
     )
 }

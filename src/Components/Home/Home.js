@@ -63,7 +63,7 @@ const Home = () => {
 
             <div className="container py-3">
                 {/* <hr /> */}
-                <h4>You can check following results</h4>
+                <h4>{!messList.length < 1 ? "You can check following results" : ""}</h4>
                 <div className="row g-3">
                     {messList.length > 0 ? messList.map((element) => {
                         console.log(element)
@@ -92,14 +92,17 @@ const Home = () => {
                                     <span> <GeoAltFill /> {element.address}</span>
                                 </div>
                             </Link>
+                            <div className="d-flex">
                             <button onClick={() => DeleteCard(element._id)} className="btn btn-danger btn-sm">delete</button>
+                            </div>
+                           
                         </div>
                     </div>
                             
                      
 
                     }): <div className="container d-flex" style={{ height: "100vh" }} >
-                        <h2 style={{ textAlign: "center", margin: "auto" }}>No data found</h2>
+                        <h2 style={{ textAlign: "center", margin: "auto" }}>No mess found</h2>
                     </div>}
                 </div>
 
@@ -166,6 +169,11 @@ background-color: #000;
         margin-top: 123px;
         background-color: #e0e0e0;
         border-radius: 50px 0px 50px 0px;
+    }
+
+    button{
+        margin: 10px auto ;
+       
     }
     
     .container{

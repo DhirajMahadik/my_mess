@@ -69,11 +69,11 @@ const Login = () => {
                 </div>
                 <div class="col-md-6">
                     <label for="InputEmail" class="form-label">Email address</label>
-                    <input onChange={onchangeHandler} value={user.email} name="email" type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter your email" />
+                    <input required onChange={onchangeHandler} value={user.email} name="email" type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter your email" />
                 </div>
                 <div class="col-md-6">
                     <label for="Password" class="form-label">Password</label>
-                    <input onChange={onchangeHandler} value={user.password} name="password" type="password" class="form-control" id="Password" placeholder="Enter your password" />
+                    <input required onChange={onchangeHandler} value={user.password} name="password" type="password" class="form-control" id="Password" placeholder="Enter your password" />
                 </div>
                 <div class="col-md-6">
                     <button type="submit" class="btn btn-sm btn-outline-warning">Login</button>
