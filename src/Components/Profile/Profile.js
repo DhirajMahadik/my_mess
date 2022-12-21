@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { PencilSquare } from 'react-bootstrap-icons'
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom'
-import { ToastContainer, toast } from 'react-toastify'
+// import { ToastContainer, toast } from 'react-toastify'
 
 
 
@@ -15,14 +15,14 @@ const Profile = () => {
 
     }
 
-    const Toastoptions= {
-        position:"top-center",
-        autoClose: 6000,
-        pauseOnHover: true,
-        draggable:true,
-        theme :"dark"
+    // const Toastoptions= {
+    //     position:"top-center",
+    //     autoClose: 6000,
+    //     pauseOnHover: true,
+    //     draggable:true,
+    //     theme :"dark"
 
-    };
+    // };
 
     const getProfile = () => {
 
@@ -313,7 +313,7 @@ const Profile = () => {
                 </div>
 
             </div>
-            <ToastContainer />
+            {/* <ToastContainer /> */}
         </PROFILE>
     )
 }

@@ -1,11 +1,11 @@
 
 import { Link } from "react-router-dom";
 import styled from "styled-components"
-import {useNavigate} from 'react-router-dom'
+// import {useNavigate} from 'react-router-dom'
 
 const Navbar = () => {
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const token = localStorage.getItem('auth_token')
 
   const logout_handler =()=>{
