@@ -10,7 +10,7 @@ const Home = () => {
 
     const GetData = async () => {
 
-        let data = await fetch('http://localhost:5000/', {
+        let data = await fetch(' https://teal-zealous-lemur.cyclic.app/', {
             method: "get"
         })
         let result = await data.json();
@@ -22,7 +22,7 @@ const Home = () => {
         let key = e.target.value;
         console.log(key)
         if (key) {
-            let data = await fetch(`http://localhost:5000/search/${key}`, { method: "get" });
+            let data = await fetch(` https://teal-zealous-lemur.cyclic.app/search/${key}`, { method: "get" });
             let res = await data.json();
             console.log(res)
             if (res) {
@@ -38,7 +38,7 @@ const Home = () => {
 
     const DeleteCard = async (id) => {
         console.log(id)
-        let data = await fetch(`http://localhost:5000/delete/${id}`, { method: "delete" })
+        let data = await fetch(` https://teal-zealous-lemur.cyclic.app/delete/${id}`, { method: "delete" })
         let res = await data.json()
         console.log(res)
         GetData()
@@ -74,7 +74,7 @@ const Home = () => {
 
 
                     // return 
-                    return <div className="col-md-4">
+                    return <div className="col-md-3">
                         <div className="card " key={element._id}    >
                             <Link className="Link  " to={`/mess/${element._id}`}>
                                 {/* <span style={{ color: "black", border: " solid 2px #fff" }} className="position-absolute top-3 start-100 translate-middle badge rounded-pill bg-warning">
@@ -92,9 +92,9 @@ const Home = () => {
                                     <span> <GeoAltFill /> {element.address}</span>
                                 </div>
                             </Link>
-                            <div className="d-flex">
+                            {/* <div className="d-flex">
                             <button onClick={() => DeleteCard(element._id)} className="btn btn-danger btn-sm">delete</button>
-                            </div>
+                            </div> */}
                            
                         </div>
                     </div>
@@ -117,6 +117,7 @@ export default Home
 const HOME = styled.section`
 
 background-color: #000;
+padding-top: 10px;
 /* height: 100vh; */
     .Link{
         width: 100%;
@@ -131,6 +132,7 @@ background-color: #000;
         background-size: cover;
         height: 300px;
         display: flex;
+     
     }
 
     .Flex form{
@@ -161,6 +163,7 @@ background-color: #000;
         padding: 0;
         border-radius: 50px 0;
         background-color: #e0e0e0;
+        height: 309px;
         /* border: none; */
     }
 

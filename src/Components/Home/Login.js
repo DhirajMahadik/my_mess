@@ -2,6 +2,7 @@ import { useState } from "react"
 import styled from "styled-components"
 import { useNavigate } from "react-router-dom"
 import { ToastContainer, toast } from 'react-toastify'
+import {PersonCircle , ArrowLeftCircleFill} from 'react-bootstrap-icons'
 
 const Login = () => {
 
@@ -24,13 +25,17 @@ const Login = () => {
         setUser({ ...user, [name]: value })
     }
 
+    const backToHome =()=>{
+        Navigate('/')
+    }
+
     const UserLogin = (e) => {
         e.preventDefault();
         
-        fetch('http://localhost:5000/login', {method:"POST" , body: JSON.stringify(user) , headers: {
+        fetch(' https://teal-zealous-lemur.cyclic.app/login', {method:"POST" , body: JSON.stringify(user) , headers: {
             'Content-Type': 'application/json'
             }
-        
+           
          }).then((res)=>{
             if(res.status===400){
                 toast.error("Enter valid login credential", Toastoptions)
@@ -64,18 +69,23 @@ const Login = () => {
         <LOGIN>
 
             <form onSubmit={UserLogin} className="col g-3">
-                <div class="col-md-6">
+            <div class="col-md-12">
+            <ArrowLeftCircleFill onClick={backToHome} style={{ fontSize: "2rem" }} />
+                 
+                </div>
+                <div class="col-md-12">
+                    <h1><PersonCircle/></h1>
                     <h2>Login</h2>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <label for="InputEmail" class="form-label">Email address</label>
                     <input required onChange={onchangeHandler} value={user.email} name="email" type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter your email" />
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <label for="Password" class="form-label">Password</label>
                     <input required onChange={onchangeHandler} value={user.password} name="password" type="password" class="form-control" id="Password" placeholder="Enter your password" />
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <button type="submit" class="btn btn-sm btn-outline-warning">Login</button>
                 </div>
 
@@ -98,14 +108,14 @@ button{
     margin: 20px auto;
 }
 
-.col-md-6{
+.col-md-12{
     margin: auto;
     padding: 10px;
 }
 
 form{
     color: #fff;
-    width: 50vw;
+    width: 30vw;
     margin:auto;
     background-color: darkslategray;
     padding: 20px;
@@ -141,8 +151,14 @@ h2{
     text-align: center;
     color: gold;
     font-weight: 800;
-    padding: 20px;
+    padding: 15px;
 
+}
+
+h1{
+    text-align: center;
+    color: gold;
+    font-weight: 800;
 }
 
 @media (max-width: 767px){

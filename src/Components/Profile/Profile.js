@@ -32,7 +32,7 @@ const Profile = () => {
             let token_key = JSON.parse(auth_token)
             console.log(token_key.token)
 
-            fetch('http://localhost:5000/profile', {
+            fetch('https://teal-zealous-lemur.cyclic.app/profile', {
                 method: "GET", headers: {
                     "authorization": "Bearer " + token_key.token
                 }
@@ -57,7 +57,7 @@ const Profile = () => {
     }, [])
 
     const image_style = {
-        backgroundImage: `url(${`http://localhost:5000/imgs/${user.image}`})`
+        backgroundImage: `url(${`https://teal-zealous-lemur.cyclic.app/imgs/${user.image}`})`
     }
 
     return (
@@ -345,7 +345,8 @@ background-color: aliceblue;
     /* margin: auto; */
     /* background-image: url("https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020"); */
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
+    background-position: center;
     height: 400px;
     margin-top: 20px;
     border-radius: 20px;

@@ -7,21 +7,16 @@ const Mess = () => {
 
     const param = useParams();
     const [mess, setMess] = useState({})
-    // const [image , setImage] = useState()
-    // const image = mess.photo
-    // console.log(param)
     const getMessData = async () => {
-        let data = await fetch(`http://localhost:5000/mess/${param.id}`, {
+        let data = await fetch(`https://teal-zealous-lemur.cyclic.app/mess/${param.id}`, {
             method: "get"
         })
         let result = await data.json()
         setMess(result)
-        // setImage(result.photo)
-        // console.log(result.name)
     }
 
     const banner_style ={
-        backgroundImage: `url(${`http://localhost:5000/imgs/${mess.image}`})`
+        backgroundImage: `url(${`https://teal-zealous-lemur.cyclic.app/imgs/${mess.image}`})`
     }
 
     useEffect(() => {
@@ -83,7 +78,7 @@ background-color: #000;
 padding-top: 20px;
 .banner{
 	height: 50vh;
-	background-size: cover;
+	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat; 
     display: flex;
@@ -103,12 +98,12 @@ padding-top: 20px;
     font-weight: 900;
     color: #fff;
     text-shadow: 3px 2px 2px   #000;
-    width: 50vw;
+    /* width: 50vw; */
    
     text-align: center;
     padding: 15px;
     background-color: rgb(22 21 21/50%);
-    border-radius: 20px;
+    /* border-radius: 20px; */
 }
 
 .container{

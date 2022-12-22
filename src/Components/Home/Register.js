@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { ToastContainer, toast } from 'react-toastify';
 import { ArrowLeftCircleFill } from 'react-bootstrap-icons'
 import { useNavigate } from 'react-router-dom'
+import { PersonCircle } from 'react-bootstrap-icons'
 
 const Register = () => {
 
@@ -17,15 +18,15 @@ const Register = () => {
         email: "",
         open: "",
         close: "",
-        password:""
+        password: ""
     })
 
-    const Toastoptions= {
-        position:"top-center",
+    const Toastoptions = {
+        position: "top-center",
         autoClose: 6000,
         pauseOnHover: true,
-        draggable:true,
-        theme :"dark"
+        draggable: true,
+        theme: "dark"
 
     };
 
@@ -50,23 +51,23 @@ const Register = () => {
         for (let key of Object.keys(User)) {
             formData.append(key, User[key]);
         }
-        await fetch('http://localhost:5000/add-mess', {
+        await fetch('https://teal-zealous-lemur.cyclic.app/add-mess', {
             method: 'POST',
             body: formData
         }).then((res) => {
             if (res.status === 200) {
                 console.log("Registered Successfully")
-                toast.success("Registered Successfully" ,Toastoptions);
-                setTimeout(()=>{
+                toast.success("Registered Successfully", Toastoptions);
+                setTimeout(() => {
                     Navigate('/login')
-                },5000)
+                }, 5000)
             } else if (res.status === 400) {
                 console.log("Email Already exist")
-                toast.error("Email Already exist." ,Toastoptions);
+                toast.error("Email Already exist.", Toastoptions);
             }
         }).catch((err) => {
             // console.log("Email already exist")
-            toast.error(err.message ,Toastoptions);
+            toast.error(err.message, Toastoptions);
         })
         // let res = await data.json()
         // console.log(res)
@@ -94,7 +95,7 @@ const Register = () => {
 
                 </div>
                 <div className="col-md-12">
-
+                    <h1><PersonCircle /></h1>
                     <h2>Register your mess here</h2>
 
                 </div>
@@ -154,10 +155,10 @@ const Register = () => {
                 </div>
                 <div className="col-md-6">
                     <div className="form-check">
-                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                            <label className="form-check-label">
-                                Accept terms & conditions
-                            </label>
+                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                        <label className="form-check-label" data-bs-toggle="modal" data-bs-target="#termsANDconditions">
+                            Accept terms & conditions
+                        </label>
                     </div>
                 </div>
 
@@ -165,7 +166,30 @@ const Register = () => {
                     <button type="submit" className="btn btn-sm btn-outline-warning ">Register</button>
                 </div>
             </form>
-            <ToastContainer/>
+
+            {/* Terms and conditions model */}
+
+            <div className="modal fade" id="termsANDconditions" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h1 className="modal-title fs-5" id="exampleModalLabel">Terms & conditions</h1>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                            <p>Thank you for using mymess. These Terms of Service (the "Terms") are intended to make you aware of your legal rights and responsibilities with respect to your access to and use of the mymess website at www.mymess.com (the "Site") and any related mobile or software applications ("mymess Platform") including but not limited to delivery of information via the website whether existing now or in the future that link to the Terms (collectively, the "Services").
+                                <br/>
+                                <b>These Terms are effective for all existing and future mymess customers, including but without limitation to users having access to 'restaurant business page' to manage their claimed business listings.</b>
+                            </p>
+                        </div>
+                        {/* <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary btn-sm" data-bs-dismiss="modal">OK</button>
+                        </div> */}
+                    </div>
+                </div>
+            </div>
+
+            <ToastContainer />
         </REGISTER_LOGIN>
     )
 }
@@ -207,8 +231,6 @@ form input:focus{
     color: #fff;
 }
 
-
-
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:active,
@@ -218,12 +240,24 @@ input:-webkit-autofill:focus {
     color: #fff !important;
     -webkit-text-fill-color: #fff !important;
 }
-h2{
+
+.form-check-label{
+    text-decoration:underline ;
+    cursor: pointer;
+}
+
+form h2{
     text-align: center;
     color: gold;
     font-weight: 800;
-    padding: 20px;
+    padding: 15px;
 
+}
+
+form h1{
+    text-align: center;
+    color: gold;
+    font-weight: 800;
 }
 
 @media (max-width: 767px){
