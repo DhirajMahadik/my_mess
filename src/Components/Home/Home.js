@@ -36,13 +36,13 @@ const Home = () => {
 
     }
 
-    const DeleteCard = async (id) => {
-        console.log(id)
-        let data = await fetch(` https://teal-zealous-lemur.cyclic.app/delete/${id}`, { method: "delete" })
-        let res = await data.json()
-        console.log(res)
-        GetData()
-    }
+    // const DeleteCard = async (id) => {
+    //     console.log(id)
+    //     let data = await fetch(` https://teal-zealous-lemur.cyclic.app/delete/${id}`, { method: "delete" })
+    //     let res = await data.json()
+    //     console.log(res)
+    //     GetData()
+    // }
 
 
     useEffect(() => {
