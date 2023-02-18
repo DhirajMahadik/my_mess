@@ -51,7 +51,7 @@ const Register = () => {
         for (let key of Object.keys(User)) {
             formData.append(key, User[key]);
         }
-        await fetch('https://teal-zealous-lemur.cyclic.app/add-mess', {
+        await fetch('http://localhost:5000/add-mess', {
             method: 'POST',
             body: formData
         }).then((res) => {

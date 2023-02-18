@@ -8,7 +8,7 @@ const Mess = () => {
     const param = useParams();
     const [mess, setMess] = useState({})
     const getMessData = async () => {
-        let data = await fetch(`https://teal-zealous-lemur.cyclic.app/mess/${param.id}`, {
+        let data = await fetch(`http://localhost:5000/mess/${param.id}`, {
             method: "get"
         })
         let result = await data.json()
@@ -16,7 +16,7 @@ const Mess = () => {
     }
 
     const banner_style ={
-        backgroundImage: `url(${`https://teal-zealous-lemur.cyclic.app/imgs/${mess.image}`})`
+        backgroundImage: `url(${`http://localhost:5000/imgs/${mess.image}`})`
     }
 
     useEffect(() => {

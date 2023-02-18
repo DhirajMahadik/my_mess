@@ -32,9 +32,9 @@ const Login = () => {
     const UserLogin = (e) => {
         e.preventDefault();
         
-        fetch(' https://teal-zealous-lemur.cyclic.app/login', {method:"POST" , body: JSON.stringify(user) , headers: {
+        fetch(' http://localhost:5000/login', {method:"POST" , body: JSON.stringify(user) , headers: {
             'Content-Type': 'application/json'
-            }
+            }   
            
          }).then((res)=>{
             if(res.status===400){

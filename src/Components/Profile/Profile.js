@@ -32,7 +32,7 @@ const Profile = () => {
             let token_key = JSON.parse(auth_token)
             console.log(token_key.token)
 
-            fetch('https://teal-zealous-lemur.cyclic.app/profile', {
+            fetch('http://localhost:5000/profile', {
                 method: "GET", headers: {
                     "authorization": "Bearer " + token_key.token
                 }
@@ -57,7 +57,7 @@ const Profile = () => {
     }, [])
 
     const image_style = {
-        backgroundImage: `url(${`https://teal-zealous-lemur.cyclic.app/imgs/${user.image}`})`
+        backgroundImage: `url(${`http://localhost:5000/imgs/${user.image}`})`
     }
 
     return (

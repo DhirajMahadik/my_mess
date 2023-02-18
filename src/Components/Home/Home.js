@@ -10,7 +10,7 @@ const Home = () => {
 
     const GetData = async () => {
 
-        let data = await fetch(' https://teal-zealous-lemur.cyclic.app/', {
+        let data = await fetch(' http://localhost:5000/', {
             method: "get"
         })
         let result = await data.json();
@@ -22,7 +22,7 @@ const Home = () => {
         let key = e.target.value;
         console.log(key)
         if (key) {
-            let data = await fetch(` https://teal-zealous-lemur.cyclic.app/search/${key}`, { method: "get" });
+            let data = await fetch(` http://localhost:5000/search/${key}`, { method: "get" });
             let res = await data.json();
             console.log(res)
             if (res) {
@@ -82,7 +82,7 @@ const Home = () => {
                             </span> */}
 
                                 {/* <img src={element.image ? element.image : "https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020"} className="card-img-top" alt="..." /> */}
-                                <img src={`https://teal-zealous-lemur.cyclic.app/imgs/${element.image}`}  className="card-img-top" alt="..." /> 
+                                <img src={`http://localhost:5000/-imgs/${element.image}`}  className="card-img-top" alt="..." /> 
 
                                 <div className="card-body">
                                     <h5 className="card-title">{element.messname}</h5>
