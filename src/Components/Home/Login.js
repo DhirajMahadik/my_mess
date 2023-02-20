@@ -76,6 +76,7 @@ const Login = () => {
                 <div class="col-md-12">
                     <h1><PersonCircle/></h1>
                     <h2>Login</h2>
+                    <ToastContainer />
                 </div>
                 <div class="col-md-12">
                     <label for="InputEmail" class="form-label">Email address</label>
@@ -90,7 +91,7 @@ const Login = () => {
                 </div>
 
             </form>
-            <ToastContainer />
+           
         </LOGIN>
     )
 }
@@ -99,7 +100,7 @@ export default Login
 
 const LOGIN = styled.div`
 
-background-color: #000;
+background-color: #000000b8;
 height: 100vh;
 display: grid;
 padding: 10px;
@@ -110,14 +111,14 @@ button{
 
 .col-md-12{
     margin: auto;
-    padding: 10px;
+    /* padding: 10px; */
 }
 
 form{
     color: #fff;
-    width: 30vw;
+    width: 25vw;
     margin:auto;
-    background-color: darkslategray;
+    background-color: #ffffff4f;
     padding: 20px;
     border-radius: 10px;
 }
@@ -151,7 +152,7 @@ h2{
     text-align: center;
     color: gold;
     font-weight: 800;
-    padding: 15px;
+    /* padding: 15px; */
 
 }
 

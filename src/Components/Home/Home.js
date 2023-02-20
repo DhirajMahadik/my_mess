@@ -82,7 +82,7 @@ const Home = () => {
                             </span> */}
 
                                 {/* <img src={element.image ? element.image : "https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020"} className="card-img-top" alt="..." /> */}
-                                <img src={`http://localhost:5000/-imgs/${element.image}`}  className="card-img-top" alt="..." /> 
+                                <img src={`http://localhost:5000/imgs/${element.image}`}  className="card-img-top" alt="..." /> 
 
                                 <div className="card-body">
                                     <h5 className="card-title">{element.messname}</h5>

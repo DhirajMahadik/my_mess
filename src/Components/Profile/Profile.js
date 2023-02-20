@@ -10,9 +10,26 @@ const Profile = () => {
 
     const navigate = useNavigate()
     const [user, setUser] = useState({})
+    // const [newData, setNewData] = useState({
+    //     messname:user.messname, messtype:"", address:"", location:"", phone:"", email:"", mess_open:"", mess_closs:""
+    // })
 
-    const onChangeHandler = () => {
+    const [daily_updates, set_daily_updates] = useState(
+        {
+            lunch_time: "", lunch_price: "", dinner_time: "", dinner_price: "", lunch_menu: "", dinner_menu: ""
+        }
+    )
 
+    const onChangeHandler = (e) => {
+        // setNewData({...newData, [e.target.name]:e.target.value})
+        set_daily_updates({ ...daily_updates, [e.target.name]: e.target.value })
+        setUser({ ...user, [e.target.name]: e.target.value })
+
+    }
+
+    const updateProfileInfo = () => {
+        console.log(user)
+        fetch('http://localhost:5000/update-profile', { method: "PUT", body: JSON.stringify(user), headers: { 'Content-Type': 'application/json' } })
     }
 
     // const Toastoptions= {
@@ -40,7 +57,7 @@ const Profile = () => {
                 return res.json()
             }).then((res1) => {
                 setUser(res1)
-               
+
             })
         } else {
             navigate('/login')
@@ -88,11 +105,11 @@ const Profile = () => {
 
                                         <div className="col-md-6">
                                             <label htmlFor="name" className="form-label">Name of your mess</label>
-                                            <input required onChange={onChangeHandler} name="messname" value={""} type="text" className="form-control" id="name" placeholder="Enter name here" />
+                                            <input required onChange={onChangeHandler} name="messname" value={user.messname} type="text" className="form-control" id="name" placeholder="Enter name here" />
                                         </div>
                                         <div className="col-md-6">
                                             <label htmlFor="type" className="form-label">Type</label>
-                                            <select required onChange={onChangeHandler} name="type" value={""} id="type" className="form-select">
+                                            <select required onChange={onChangeHandler} name="messtype" value={user.messtype} id="type" className="form-select">
                                                 <option value={"Veg/Non-Veg"}>Veg / Non-veg</option>
                                                 <option value={" Only Veg"}>Only Veg</option>
                                                 <option value={" Only Non-Veg"}>Only Non-Veg</option>
@@ -101,27 +118,27 @@ const Profile = () => {
 
                                         <div className="col-12">
                                             <label htmlFor="inputAddress" className="form-label">Address</label>
-                                            <input required onChange={onChangeHandler} name="address" value={""} type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
+                                            <input required onChange={onChangeHandler} name="address" value={user.address} type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
                                         </div>
                                         <div className="col-12">
                                             <label htmlFor="location" className="form-label">Location URL</label>
-                                            <input required onChange={onChangeHandler} name="location" value={""} type="text" className="form-control" id="location" placeholder="Google map link etc" />
+                                            <input required onChange={onChangeHandler} name="location" value={user.location} type="text" className="form-control" id="location" placeholder="Google map link etc" />
                                         </div>
 
-                                        <div className="col-md-4">
+                                        <div className="col-md-6">
                                             <label htmlFor="phone" className="form-label">Phone no</label>
-                                            <input required onChange={onChangeHandler} name="phone" value={""} type="text" className="form-control" id="phone" placeholder="Enter phone no" />
+                                            <input required onChange={onChangeHandler} name="phone" value={user.phone} type="text" className="form-control" id="phone" placeholder="Enter phone no" />
                                         </div>
-                                        <div className="col-md-4">
+                                        <div className="col-md-6">
                                             <label htmlFor="email" className="form-label">Email</label>
-                                            <input required onChange={onChangeHandler} name="email" value={""} type="email" className="form-control" id="email" placeholder="Enter email" />
+                                            <input required onChange={onChangeHandler} name="email" value={user.email} type="email" className="form-control" id="email" placeholder="Enter email" />
                                         </div>
                                         <div className="col-4">
 
                                             <label className="form-label" htmlFor="openTime">
                                                 Mess open at
                                             </label>
-                                            <input required onChange={onChangeHandler} name="open" value={""} className="form-control" type="time" id="openTime" />
+                                            <input required onChange={onChangeHandler} name="mess_open" value={user.mess_open} className="form-control" type="time" id="openTime" />
 
                                         </div>
 
@@ -130,7 +147,7 @@ const Profile = () => {
                                             <label className="form-label" htmlFor="closeTime">
                                                 Mess close at
                                             </label>
-                                            <input onChange={onChangeHandler} name="close" value={""} className="form-control" type="time" id="closeTime" />
+                                            <input onChange={onChangeHandler} name="mess_close" value={user.mess_close} className="form-control" type="time" id="closeTime" />
 
                                         </div>
 
@@ -142,7 +159,7 @@ const Profile = () => {
                                     </div>
                                     <div className="modal-footer">
                                         {/* <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Close</button> */}
-                                        <button type="button" className="btn btn-primary btn-sm" data-bs-dismiss="modal">Save changes</button>
+                                        <button type="button" onClick={updateProfileInfo} className="btn btn-primary btn-sm" data-bs-dismiss="modal">Save changes</button>
                                     </div>
                                 </div>
                             </div>
@@ -153,15 +170,15 @@ const Profile = () => {
                     <hr />
                     <div className="col-md-6">
                         <h4> Mess name </h4>
-                        <p>{user.messname}</p>
+                        <p className={`${user.messname ? "" : "text-danger"}`}>{user.messname ? user.messname : "Please update your messname****"}</p>
                     </div>
                     <div className="col-md-6">
                         <h4> Type </h4>
-                        <p>{user.type}</p>
+                        <p className={`${user.messtype ? "" : "text-danger"}`}>{user.messtype ? user.messtype : "Please update****"}</p>
                     </div>
                     <div className="col-md-6">
                         <h4> Address </h4>
-                        <p>{user.address}</p>
+                        <p className={`${user.address ? "" : "text-danger"}`}>{user.address ? user.address : "Please update your address****"}</p>
                     </div>
 
                     {/* <div className="col-md-6">
@@ -171,22 +188,22 @@ const Profile = () => {
 
                     <div className="col-md-6">
                         <h4> Phone no </h4>
-                        <p>{user.phone}</p>
+                        <p >{user.phone}</p>
                     </div>
 
                     <div className="col-md-6">
                         <h4> Email address </h4>
-                        <p>{user.email}</p>
+                        <p className={`${user.email ? "" : "text-danger"}`}>{user.email}</p>
                     </div>
 
                     <div className="col-md-6">
                         <h4> Mess open at </h4>
-                        <p>{user.open}</p>
+                        <p className={`${user.mess_open ? "" : "text-danger"}`}>{user.mess_open ? user.mess_open : "Please update****"}</p>
                     </div>
 
                     <div className="col-md-6">
                         <h4> Mess close at  </h4>
-                        <p>{user.close}</p>
+                        <p className={`${user.mess_close ? "" : "text-danger"}`}>{user.mess_close ? user.mess_close : "please update****"}</p>
                     </div>
                     <hr />
 
@@ -204,18 +221,18 @@ const Profile = () => {
                     </div>
 
                     <div className="col-md-3">
-                        Lunch time <input className="form-control" onChange={onChangeHandler} type="" name="" value="" placeholder="eg. 12 pm to 3 pm" />
+                        Lunch time <input className="form-control" onChange={onChangeHandler} type="time" name="lunch_time" value={daily_updates.lunch_time} placeholder="eg. 12 pm to 3 pm" />
                     </div>
 
                     <div className="col-md-3">
-                        Dinner time <input className="form-control" onChange={onChangeHandler} type="" name="" value="" placeholder="eg. 7 pm to 10 pm" />
+                        Dinner time <input className="form-control" onChange={onChangeHandler} type="time" name="dinner_time" value={daily_updates.dinner_time} placeholder="eg. 7 pm to 10 pm" />
                     </div>
                     <div className="col-md-3">
-                        Lunch Price <input className="form-control" onChange={onChangeHandler} type="" name="" value="" placeholder="" />
+                        Lunch Price <input className="form-control" onChange={onChangeHandler} type="text" name="lunch_price" value={daily_updates.lunch_price} placeholder="" />
                     </div>
 
                     <div className="col-md-3">
-                        Dinner Price <input className="form-control" onChange={onChangeHandler} type="" name="" value="" placeholder="" />
+                        Dinner Price <input className="form-control" onChange={onChangeHandler} type="text" name="dinner_price" value={daily_updates.dinner_price} placeholder="" />
                     </div>
 
                     <hr />
@@ -226,12 +243,12 @@ const Profile = () => {
 
                     <div className="col-md-3">
                         <label className="form-controlo">Lunch menu</label>
-                        <textarea className="form-control" rows="" cols="" placeholder=" please update it on daily basis Eg. bhaji , chapati ect" />
+                        <textarea className="form-control" rows="" cols="" onChange={onChangeHandler} value={daily_updates.lunch_menu} placeholder=" please update it on daily basis Eg. bhaji , chapati ect" />
                     </div>
 
                     <div className="col-md-3">
                         <label className="form-controlo">Dinner menu</label>
-                        <textarea className="form-control" rows="" cols="" placeholder=" please update it on daily basis Eg. bhaji , chapati ect" />
+                        <textarea className="form-control" rows="" cols="" onChange={onChangeHandler} value={daily_updates.dinner_menu} placeholder=" please update it on daily basis Eg. bhaji , chapati ect" />
                     </div>
 
                     <div className="edit" >

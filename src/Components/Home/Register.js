@@ -8,16 +8,11 @@ import { PersonCircle } from 'react-bootstrap-icons'
 const Register = () => {
 
     const Navigate = useNavigate()
-    const [Banner, setBanner] = useState();
+    // const [Banner, setBanner] = useState();
     const [User, setUser] = useState({
         messname: "",
-        type: "",
-        address: "",
-        location: "",
         phone: "",
         email: "",
-        open: "",
-        close: "",
         password: ""
     })
 
@@ -30,11 +25,11 @@ const Register = () => {
 
     };
 
-    const onFileChangeHandler = (event) => {
-        let file = event.target.files[0];
-        setBanner(file);
-        console.log(file)
-    }
+    // const onFileChangeHandler = (event) => {
+    //     let file = event.target.files[0];
+    //     setBanner(file);
+    //     console.log(file)
+    // }
 
     const onchangeHandler = (e) => {
         let name = e.target.name;
@@ -46,14 +41,15 @@ const Register = () => {
     const OnsubmitHandler = async (e) => {
         e.preventDefault();
         // toast.success("Registered Successfully" ,Toastoptions);
-        let formData = new FormData();
-        formData.append('image', Banner);
-        for (let key of Object.keys(User)) {
-            formData.append(key, User[key]);
-        }
+        // let formData = new FormData();
+        // formData.append('image', Banner);
+        // for (let key of Object.keys(User)) {
+        //     formData.append(key, User[key]);
+        // }
         await fetch('http://localhost:5000/add-mess', {
             method: 'POST',
-            body: formData
+            body: JSON.stringify(User),
+            headers:{'Content-Type':'application/json'}
         }).then((res) => {
             if (res.status === 200) {
                 console.log("Registered Successfully")
@@ -99,20 +95,20 @@ const Register = () => {
                     <h2>Register your mess here</h2>
 
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-12">
                     <label htmlFor="name" className="form-label">Name of your mess</label>
                     <input required onChange={onchangeHandler} name="messname" value={User.messname} type="text" className="form-control" id="name" placeholder="Enter name here" />
                 </div>
-                <div className="col-md-6">
+                {/* <div className="col-md-6">
                     <label htmlFor="type" className="form-label">Type</label>
                     <select required onChange={onchangeHandler} name="type" value={User.type} id="type" className="form-select">
                         <option value={"Veg/Non-Veg"}>Veg / Non-veg</option>
                         <option value={" Only Veg"}>Only Veg</option>
                         <option value={" Only Non-Veg"}>Only Non-Veg</option>
                     </select>
-                </div>
+                </div> */}
 
-                <div className="col-12">
+                {/* <div className="col-12">
                     <label htmlFor="inputAddress" className="form-label">Address</label>
                     <input required onChange={onchangeHandler} name="address" value={User.address} type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
                 </div>
@@ -123,37 +119,37 @@ const Register = () => {
                 <div className="col-md-6">
                     <label htmlFor="banner" className="form-label">Mess Banner</label>
                     <input required onChange={onFileChangeHandler} name="banner" type="file" className="form-control" id="banner" />
-                </div>
-                <div className="col-md-6">
+                </div> */}
+                <div className="col-md-12">
                     <label htmlFor="phone" className="form-label">Phone no</label>
                     <input required onChange={onchangeHandler} name="phone" value={User.phone} type="text" className="form-control" id="phone" placeholder="Enter phone no" />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-12">
                     <label htmlFor="email" className="form-label">Email</label>
                     <input required onChange={onchangeHandler} name="email" value={User.email} type="email" className="form-control" id="email" placeholder="Enter email" />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-12">
                     <label htmlFor="password" className="form-label">Password</label>
-                    <input required onChange={onchangeHandler} name="password" type="password" className="form-control" id="password" placeholder="Enter password" />
+                    <input required onChange={onchangeHandler} name="password" type="password" value={User.password} className="form-control" id="password" placeholder="Enter password" />
                 </div>
-                <div className="col-6">
+                {/* <div className="col-6">
 
                     <label className="form-label" htmlFor="openTime">
                         Mess open at
                     </label>
                     <input required onChange={onchangeHandler} name="open" value={User.open} className="form-control" type="time" id="openTime" />
 
-                </div>
+                </div> */}
 
-                <div className="col-6">
+                {/* <div className="col-6">
 
                     <label className="form-label" htmlFor="closeTime">
                         Mess close at
                     </label>
                     <input onChange={onchangeHandler} name="close" value={User.close} className="form-control" type="time" id="closeTime" />
 
-                </div>
-                <div className="col-md-6">
+                </div> */}
+                <div className="col-md-12">
                     <div className="form-check">
                         <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
                         <label className="form-check-label" data-bs-toggle="modal" data-bs-target="#termsANDconditions">
@@ -163,7 +159,7 @@ const Register = () => {
                 </div>
 
                 <div className="col-12 d-flex">
-                    <button type="submit" className="btn btn-sm btn-outline-warning ">Register</button>
+                    <button type="submit" className="btn btn-sm btn-warning ">Register</button>
                 </div>
             </form>
 
@@ -199,8 +195,8 @@ export default Register
 export const REGISTER_LOGIN = styled.div`
 display: flex;
 padding: 20px;
-background-color: #000;
-/* height: 100vh; */
+background-color: #000000b8;
+height: 100vh;
 
 button{
     margin: 20px auto;
@@ -208,11 +204,11 @@ button{
 
 form{
     color: #fff;
-    width: 60vw;
+    width: 30vw;
     margin:auto;
     /* background-color: #1a1818; */
-    background-color: darkslategray;
-    padding: 20px;
+    background-color: #ffffff4f;
+    padding: 0 10px;
     border-radius: 10px;
 }
 
@@ -250,7 +246,7 @@ form h2{
     text-align: center;
     color: gold;
     font-weight: 800;
-    padding: 15px;
+    /* padding: 15px; */
 
 }
 
