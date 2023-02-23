@@ -85,10 +85,10 @@ const Home = () => {
                                 <img src={`http://localhost:5000/imgs/${element.image}`}  className="card-img-top" alt="..." /> 
 
                                 <div className="card-body">
-                                    <h5 className="card-title">{element.messname}</h5>
-                                    <span className="card-text">{element.type}</span>
-                                    <span>Open : {element.open}</span>
-                                    <span>Close : {element.close}</span>
+                                    <h5 className="card-title ">{element.messname}</h5>
+                                    <span className="card-text">{element.messtype}</span>
+                                    <span>Open : {element.mess_open}</span>
+                                    <span>Close : {element.mess_close}</span>
                                     <span> <GeoAltFill /> {element.address}</span>
                                 </div>
                             </Link>

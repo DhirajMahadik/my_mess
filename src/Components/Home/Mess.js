@@ -48,22 +48,102 @@ const Mess = () => {
                     </div>
                     <div className='open-hours d-flex my-2'>
                         <h3>Open Hours</h3>
-                        <ul>
-                            <li> Mon:	12:00 AM – 12:00 PM</li>
-                            <li>Tue:	12:00 AM – 12:00 PM</li>
-                            <li>Wed:	12:00 AM – 12:00 PM</li>
-                            <li>Thu:	12:00 AM – 12:00 PM</li>
-                            <li>Fri:	12:00 AM – 12:00 PM</li>
-                            <li>Sat:	4:00 – 7:00 PM</li>
-                            <li>Sun:	4:00 – 7:00 PM</li>
-
-                        </ul>
+                        <div className='d-flex row'>
+                            <div className='col-md-6 '>
+                                <h5 className=''>Lunch Time</h5>
+                                <h6 className='my-2 text-center'>10:00 AM</h6>
+                            </div>
+                            <div className='col-md-6 '>
+                                <h5>Dinner Time</h5>
+                                <h6 className='my-2 text-center'>07:00 PM</h6>
+                            </div>
+                            <div className='col-md-6 '>
+                                <h5 className=''>Lunch Price</h5>
+                                <h6 className='my-2 text-center'>Rs. 50/-</h6>
+                            </div>
+                            <div className='col-md-6 '>
+                                <h5 className=''>Dinner Price</h5>
+                                <h6 className='my-2 text-center'>Rs. 50/-</h6>
+                            </div>
+                        </div>
+                        <h3>Today's Menu</h3>
+                        <div className='d-flex row'>
+                            <div className='col-md-6 '>
+                                <h5 className=''>Lunch Menu</h5>
+                                <h6 className='my-2 text-center'>Bhaji , chapati, papad, salad, hhjs, jsjsj</h6>
+                            </div>
+                            <div className='col-md-6 '>
+                                <h5>Dinner Menu</h5>
+                                <h6 className='my-2 text-center'>Bhaji , chapati, papad, salad, hhjs, jsjsj</h6>
+                            </div>
+                        </div>
 
                     </div>
 
                 </div>
 
             </section>
+            <div className='gallary container  '>
+                <div>
+                    <h2 className='my-2 text-center'>Gallary</h2>
+                </div>
+                <div className=' row g-2'>
+                <div className="col-md-4 py-2">
+                        <div className="card m-auto" style={{ width: "18rem" }}>
+                            <img src="https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020" className="card-img-top" alt="..." />
+                            <div className="card-body position-absulute">
+                                <a href="/" className="btn btn-sm btn-danger">remove</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-md-4 py-2">
+                        <div className="card m-auto " style={{ width: "18rem" }}>
+                            <img src="https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020" className="card-img-top" alt="..." />
+                            <div className="card-body position-absulute">
+                                <a href="/" className="btn btn-sm btn-danger">remove</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-md-4 py-2">
+                        <div className="card m-auto" style={{ width: "18rem" }}>
+                            <img src="https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020" className="card-img-top" alt="..." />
+                            <div className="card-body position-absulute">
+                                <a href="/" className="btn btn-sm btn-danger">remove</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-md-4 py-2">
+                        <div className="card m-auto" style={{ width: "18rem" }}>
+                            <img src="https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020" className="card-img-top" alt="..." />
+                            <div className="card-body position-absulute">
+                                <a href="/" className="btn btn-sm btn-danger">remove</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-md-4 py-2">
+                        <div className="card m-auto" style={{ width: "18rem" }}>
+                            <img src="https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020" className="card-img-top" alt="..." />
+                            <div className="card-body position-absulute">
+                                <a href="/" className="btn btn-sm btn-danger">remove</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-md-4 py-2">
+                        <div className="card m-auto" style={{ width: "18rem" }}>
+                            <img src="https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020" className="card-img-top" alt="..." />
+                            <div className="card-body position-absulute">
+                                <a href="/" className="btn btn-sm btn-danger">remove</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
 
         </MESS>
 

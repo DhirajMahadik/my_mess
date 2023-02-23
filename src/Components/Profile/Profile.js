@@ -20,6 +20,13 @@ const Profile = () => {
         }
     )
 
+    const [image_collection, setImage_collection] = useState()
+
+    const addImage_collection = (e) =>{
+        let formData = new FormData(e.target.file)
+        console.log(formData)
+    }
+
     const onChangeHandler = (e) => {
         // setNewData({...newData, [e.target.name]:e.target.value})
         set_daily_updates({ ...daily_updates, [e.target.name]: e.target.value })
@@ -30,6 +37,10 @@ const Profile = () => {
     const updateProfileInfo = () => {
         console.log(user)
         fetch('http://localhost:5000/update-profile', { method: "PUT", body: JSON.stringify(user), headers: { 'Content-Type': 'application/json' } })
+    }
+
+    const updateDailyUpdates = ()=>{
+        fetch('http://localhost:5000/update-profile', { method: "PUT", body: JSON.stringify(Object.assign(daily_updates,{_id:user._id})), headers: { 'Content-Type': 'application/json' } })
     }
 
     // const Toastoptions= {
@@ -56,8 +67,18 @@ const Profile = () => {
             }).then((res) => {
                 return res.json()
             }).then((res1) => {
-                setUser(res1)
+                if(res1.name === 'TokenExpiredError'){
+                    localStorage.removeItem('auth_token')
+                    navigate('/login')
+                }else{
+                    setUser(res1)
+                }
+                
 
+            }).catch(async(err)=>{
+                let Err = await err.json()
+                console.log(Err)
+                
             })
         } else {
             navigate('/login')
@@ -243,16 +264,16 @@ const Profile = () => {
 
                     <div className="col-md-3">
                         <label className="form-controlo">Lunch menu</label>
-                        <textarea className="form-control" rows="" cols="" onChange={onChangeHandler} value={daily_updates.lunch_menu} placeholder=" please update it on daily basis Eg. bhaji , chapati ect" />
+                        <textarea className="form-control" rows="" cols="" name="lunch_menu" onChange={onChangeHandler} value={daily_updates.lunch_menu} placeholder=" please update it on daily basis Eg. bhaji , chapati ect" />
                     </div>
 
                     <div className="col-md-3">
                         <label className="form-controlo">Dinner menu</label>
-                        <textarea className="form-control" rows="" cols="" onChange={onChangeHandler} value={daily_updates.dinner_menu} placeholder=" please update it on daily basis Eg. bhaji , chapati ect" />
+                        <textarea className="form-control" rows="" cols="" name="dinner_menu" onChange={onChangeHandler} value={daily_updates.dinner_menu} placeholder=" please update it on daily basis Eg. bhaji , chapati ect" />
                     </div>
 
                     <div className="edit" >
-                        <button type="button" className="btn btn-sm btn-warning">Update</button>
+                        <button type="button" onClick={updateDailyUpdates} className="btn btn-sm btn-warning">Update</button>
                     </div>
 
                     {/* <div className="col-md-3">
@@ -324,7 +345,7 @@ const Profile = () => {
 
                     <div className="col-md-12 py-2 d-flex">
                         <label className="upload-label bg-warning" htmlFor="upload-photo">Add More</label>
-                        <input className="upload-photo" type="file" name="photo" id="upload-photo" />
+                        <input className="upload-photo" type="file" name="photo" onChange={addImage_collection}  id="upload-photo" />
                     </div>
 
                 </div>
@@ -426,8 +447,8 @@ textarea:focus{
 .Deatails  p{
     padding: 5px 5px 5px 10px;
     color: #000;
-    background-color: lightgray;
-    border-radius: 10px;
+    background-color: #b7dce3;
+    border-radius: 5px;
     text-align: center;
 }
 
