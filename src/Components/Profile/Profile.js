@@ -41,7 +41,7 @@ const Profile = () => {
 
     const addImage_collection = (e) =>{
         let file = e.target.files[0]
-        let obj = {_id:user._id, image:file}
+        let obj = {_id:user._id, image:file , previous:user.image}
         let formData = new FormData()
         for (let key of Object.keys(obj)) {
             formData.append(key, obj[key]);
