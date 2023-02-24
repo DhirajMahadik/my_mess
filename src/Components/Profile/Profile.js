@@ -20,12 +20,44 @@ const Profile = () => {
         }
     )
 
-    const [image_collection, setImage_collection] = useState()
+    // const [image_collection, setImage_collection] = useState()
+
+    const addImage_banner = (e) =>{
+        let file = e.target.files[0]
+        let obj = {_id:user._id, image:file}
+        let formData = new FormData()
+        for (let key of Object.keys(obj)) {
+            formData.append(key, obj[key]);
+        }
+        console.log(formData)
+        fetch('http://localhost:5000/add-image', {
+            method: 'POST',
+            body: formData,
+            // headers:{'Content-Type':'application/json'}
+        }).then((res)=>{
+            return res.json()
+        })
+    }
 
     const addImage_collection = (e) =>{
-        let formData = new FormData(e.target.file)
+        let file = e.target.files[0]
+        let obj = {_id:user._id, image:file}
+        let formData = new FormData()
+        for (let key of Object.keys(obj)) {
+            formData.append(key, obj[key]);
+        }
         console.log(formData)
+        fetch('http://localhost:5000/add-collection-image', {
+            method: 'POST',
+            body: formData,
+            // headers:{'Content-Type':'application/json'}
+        }).then((res)=>{
+            if(res.status === 200){
+                getProfile()
+            }
+        })
     }
+
 
     const onChangeHandler = (e) => {
         // setNewData({...newData, [e.target.name]:e.target.value})
@@ -72,6 +104,7 @@ const Profile = () => {
                     navigate('/login')
                 }else{
                     setUser(res1)
+                    console.log(res1)
                 }
                 
 
@@ -95,7 +128,7 @@ const Profile = () => {
     }, [])
 
     const image_style = {
-        backgroundImage: `url(${`http://localhost:5000/imgs/${user.image}`})`
+        backgroundImage: `url(${user.image})`
     }
 
     return (
@@ -104,9 +137,9 @@ const Profile = () => {
                 <div className="image py-3" style={image_style} >
                     {/* <img className="py-3" src="https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020" alt="" /> */}
                     <form>
-                        <label htmlFor="banner" >Update your mess banner...</label>
-                        <input className=" my-2" id="banner" type="file" />
-                        <button type="button" className="btn btn-sm btn-warning">Update</button>
+                        <h2 htmlFor="banner" >Update your mess banner...</h2>
+                        <input className=" my-2" id="banner" onChange={addImage_banner} type="file"  />
+                        <label type="button" htmlFor="banner" className="btn btn-sm btn-warning">Update</label>
                     </form>
                 </div>
 
@@ -289,59 +322,21 @@ const Profile = () => {
                 <h2>Gallary</h2>
                 <hr />
                 <div className=" gallary row g-3">
-                    <div className="col-md-4 py-2">
-                        <div className="card " style={{ width: "18rem" }}>
-                            <img src="https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020" className="card-img-top" alt="..." />
-                            <div className="card-body position-absulute">
-                                <a href="/" className="btn btn-sm btn-danger">remove</a>
+                    {
+                     user.photos  ?  user.photos.map((element)=>{
+                            return <div className="col-md-4 py-2">
+                            <div className="card " style={{ width: "18rem" }}>
+                                <img src={element} className="card-img-top" alt="..." />
+                                <div className="card-body position-absulute">
+                                    <a href="/" className="btn btn-sm btn-danger">remove</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        }) : <h3>Please upload some pictures</h3>
+                    }
+                    
 
-                    <div className="col-md-4 py-2">
-                        <div className="card " style={{ width: "18rem" }}>
-                            <img src="https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020" className="card-img-top" alt="..." />
-                            <div className="card-body position-absulute">
-                                <a href="/" className="btn btn-sm btn-danger">remove</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="col-md-4 py-2">
-                        <div className="card " style={{ width: "18rem" }}>
-                            <img src="https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020" className="card-img-top" alt="..." />
-                            <div className="card-body position-absulute">
-                                <a href="/" className="btn btn-sm btn-danger">remove</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="col-md-4 py-2">
-                        <div className="card " style={{ width: "18rem" }}>
-                            <img src="https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020" className="card-img-top" alt="..." />
-                            <div className="card-body position-absulute">
-                                <a href="/" className="btn btn-sm btn-danger">remove</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="col-md-4 py-2">
-                        <div className="card " style={{ width: "18rem" }}>
-                            <img src="https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020" className="card-img-top" alt="..." />
-                            <div className="card-body position-absulute">
-                                <a href="/" className="btn btn-sm btn-danger">remove</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="col-md-4 py-2">
-                        <div className="card " style={{ width: "18rem" }}>
-                            <img src="https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020" className="card-img-top" alt="..." />
-                            <div className="card-body position-absulute">
-                                <a href="/" className="btn btn-sm btn-danger">remove</a>
-                            </div>
-                        </div>
-                    </div>
+                   
 
                     <div className="col-md-12 py-2 d-flex">
                         <label className="upload-label bg-warning" htmlFor="upload-photo">Add More</label>
@@ -400,15 +395,20 @@ background-color: aliceblue;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
+    h2{
+        color: #fff;
+        font-weight: 800;
+    }
 }
 
 .image input{
     border-radius: 20px;
     color: #fff;
+    visibility: hidden;
 }
 
 .image label{
-    font-size: 2rem;
+    /* font-size: 1rem; */
     font-weight: bold;
     padding: 10px;
     color: #fff;
