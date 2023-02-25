@@ -24,7 +24,7 @@ const Profile = () => {
 
     const addImage_banner = (e) =>{
         let file = e.target.files[0]
-        let obj = {_id:user._id, image:file}
+        let obj = {_id:user._id, image:file, previous:user.image}
         let formData = new FormData()
         for (let key of Object.keys(obj)) {
             formData.append(key, obj[key]);
@@ -35,19 +35,38 @@ const Profile = () => {
             body: formData,
             // headers:{'Content-Type':'application/json'}
         }).then((res)=>{
+            getProfile()
             return res.json()
         })
     }
 
     const addImage_collection = (e) =>{
         let file = e.target.files[0]
-        let obj = {_id:user._id, image:file , previous:user.image}
+        let obj = {_id:user._id, image:file  }
         let formData = new FormData()
         for (let key of Object.keys(obj)) {
             formData.append(key, obj[key]);
         }
         console.log(formData)
         fetch('http://localhost:5000/add-collection-image', {
+            method: 'POST',
+            body: formData,
+            // headers:{'Content-Type':'application/json'}
+        }).then((res)=>{
+            if(res.status === 200){
+                getProfile()
+            }
+        })
+    }
+
+    const removeImage_collection = (url) =>{
+        let obj = {_id:user._id, previous:url  }
+        let formData = new FormData()
+        for (let key of Object.keys(obj)) {
+            formData.append(key, obj[key]);
+        }
+        console.log(formData)
+        fetch('http://localhost:5000/remove-collection-image', {
             method: 'POST',
             body: formData,
             // headers:{'Content-Type':'application/json'}
@@ -68,11 +87,19 @@ const Profile = () => {
 
     const updateProfileInfo = () => {
         console.log(user)
-        fetch('http://localhost:5000/update-profile', { method: "PUT", body: JSON.stringify(user), headers: { 'Content-Type': 'application/json' } })
+        fetch('http://localhost:5000/update-profile', { method: "PUT", body: JSON.stringify(user), headers: { 'Content-Type': 'application/json' } }).then((res)=>{
+            if(res.status === 200){
+                getProfile()
+            }
+        })
     }
 
     const updateDailyUpdates = ()=>{
-        fetch('http://localhost:5000/update-profile', { method: "PUT", body: JSON.stringify(Object.assign(daily_updates,{_id:user._id})), headers: { 'Content-Type': 'application/json' } })
+        fetch('http://localhost:5000/update-profile', { method: "PUT", body: JSON.stringify(Object.assign(daily_updates,{_id:user._id})), headers: { 'Content-Type': 'application/json' } }).then((res)=>{
+            if(res.status === 200){
+                getProfile()
+            }
+        })
     }
 
     // const Toastoptions= {
@@ -275,34 +302,35 @@ const Profile = () => {
                     </div>
 
                     <div className="col-md-3">
-                        Lunch time <input className="form-control" onChange={onChangeHandler} type="time" name="lunch_time" value={daily_updates.lunch_time} placeholder="eg. 12 pm to 3 pm" />
+                        Lunch time <input className="form-control" onChange={onChangeHandler} type="time" name="lunch_time" value={user.lunch_time} placeholder="eg. 12 pm to 3 pm" />
                     </div>
 
                     <div className="col-md-3">
-                        Dinner time <input className="form-control" onChange={onChangeHandler} type="time" name="dinner_time" value={daily_updates.dinner_time} placeholder="eg. 7 pm to 10 pm" />
+                        Dinner time <input className="form-control" onChange={onChangeHandler} type="time" name="dinner_time" value={user.dinner_time} placeholder="eg. 7 pm to 10 pm" />
                     </div>
                     <div className="col-md-3">
-                        Lunch Price <input className="form-control" onChange={onChangeHandler} type="text" name="lunch_price" value={daily_updates.lunch_price} placeholder="" />
+                        Lunch Price <input className="form-control" onChange={onChangeHandler} type="text" name="lunch_price" value={user.lunch_price} placeholder="" />
                     </div>
 
                     <div className="col-md-3">
-                        Dinner Price <input className="form-control" onChange={onChangeHandler} type="text" name="dinner_price" value={daily_updates.dinner_price} placeholder="" />
+                        Dinner Price <input className="form-control" onChange={onChangeHandler} type="text" name="dinner_price" value={user.dinner_price} placeholder="" />
                     </div>
 
                     <hr />
 
                     <div className="col-md-12">
                         <h5> Today's Menu</h5>
+                        <h6 className="text-danger">Please update menu details regularly</h6>
                     </div>
 
                     <div className="col-md-3">
                         <label className="form-controlo">Lunch menu</label>
-                        <textarea className="form-control" rows="" cols="" name="lunch_menu" onChange={onChangeHandler} value={daily_updates.lunch_menu} placeholder=" please update it on daily basis Eg. bhaji , chapati ect" />
+                        <textarea className="form-control" rows="" cols="" name="lunch_menu" onChange={onChangeHandler} value={user.lunch_menu} placeholder=" please update it on daily basis Eg. bhaji , chapati ect" />
                     </div>
 
                     <div className="col-md-3">
                         <label className="form-controlo">Dinner menu</label>
-                        <textarea className="form-control" rows="" cols="" name="dinner_menu" onChange={onChangeHandler} value={daily_updates.dinner_menu} placeholder=" please update it on daily basis Eg. bhaji , chapati ect" />
+                        <textarea className="form-control" rows="" cols="" name="dinner_menu" onChange={onChangeHandler} value={user.dinner_menu} placeholder=" please update it on daily basis Eg. bhaji , chapati ect" />
                     </div>
 
                     <div className="edit" >
@@ -328,7 +356,7 @@ const Profile = () => {
                             <div className="card " style={{ width: "18rem" }}>
                                 <img src={element} className="card-img-top" alt="..." />
                                 <div className="card-body position-absulute">
-                                    <a href="/" className="btn btn-sm btn-danger">remove</a>
+                                    <button  className="btn btn-sm btn-danger" onClick={()=>removeImage_collection(element)}>remove</button>
                                 </div>
                             </div>
                         </div>
@@ -378,7 +406,7 @@ background-color: aliceblue;
     /* margin: auto; */
     /* background-image: url("https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020"); */
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     height: 400px;
     margin-top: 20px;
