@@ -32,7 +32,7 @@ const Login = () => {
     const UserLogin = (e) => {
         e.preventDefault();
         
-        fetch(' http://localhost:5000/login', {method:"POST" , body: JSON.stringify(user) , headers: {
+        fetch('https://careful-ray-helmet.cyclic.app/login', {method:"POST" , body: JSON.stringify(user) , headers: {
             'Content-Type': 'application/json'
             }   
            

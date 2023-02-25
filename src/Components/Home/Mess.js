@@ -8,7 +8,7 @@ const Mess = () => {
   const [mess, setMess] = useState({});
   const [gallary, setGallary] = useState([])
   const getMessData = async () => {
-    let data = await fetch(`http://localhost:5000/mess/${param.id}`, {
+    let data = await fetch(`https://careful-ray-helmet.cyclic.app/mess/${param.id}`, {
       method: "get",
     });
     let result = await data.json();

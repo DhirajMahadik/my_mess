@@ -10,7 +10,7 @@ const Home = () => {
 
     const GetData = async () => {
 
-        let data = await fetch(' http://localhost:5000/', {
+        let data = await fetch(' https://careful-ray-helmet.cyclic.app/', {
             method: "get"
         })
         let result = await data.json();
@@ -22,7 +22,7 @@ const Home = () => {
         let key = e.target.value;
         console.log(key)
         if (key) {
-            let data = await fetch(` http://localhost:5000/search/${key}`, { method: "get" });
+            let data = await fetch(` https://careful-ray-helmet.cyclic.app/search/${key}`, { method: "get" });
             let res = await data.json();
             console.log(res)
             if (res) {

@@ -30,7 +30,7 @@ const Profile = () => {
             formData.append(key, obj[key]);
         }
         console.log(formData)
-        fetch('http://localhost:5000/add-image', {
+        fetch('https://careful-ray-helmet.cyclic.app/add-image', {
             method: 'POST',
             body: formData,
             // headers:{'Content-Type':'application/json'}
@@ -48,7 +48,7 @@ const Profile = () => {
             formData.append(key, obj[key]);
         }
         console.log(formData)
-        fetch('http://localhost:5000/add-collection-image', {
+        fetch('https://careful-ray-helmet.cyclic.app/add-collection-image', {
             method: 'POST',
             body: formData,
             // headers:{'Content-Type':'application/json'}
@@ -66,7 +66,7 @@ const Profile = () => {
             formData.append(key, obj[key]);
         }
         console.log(formData)
-        fetch('http://localhost:5000/remove-collection-image', {
+        fetch('https://careful-ray-helmet.cyclic.app/remove-collection-image', {
             method: 'POST',
             body: formData,
             // headers:{'Content-Type':'application/json'}
@@ -87,7 +87,7 @@ const Profile = () => {
 
     const updateProfileInfo = () => {
         console.log(user)
-        fetch('http://localhost:5000/update-profile', { method: "PUT", body: JSON.stringify(user), headers: { 'Content-Type': 'application/json' } }).then((res)=>{
+        fetch('https://careful-ray-helmet.cyclic.app/update-profile', { method: "PUT", body: JSON.stringify(user), headers: { 'Content-Type': 'application/json' } }).then((res)=>{
             if(res.status === 200){
                 getProfile()
             }
@@ -95,7 +95,7 @@ const Profile = () => {
     }
 
     const updateDailyUpdates = ()=>{
-        fetch('http://localhost:5000/update-profile', { method: "PUT", body: JSON.stringify(Object.assign(daily_updates,{_id:user._id})), headers: { 'Content-Type': 'application/json' } }).then((res)=>{
+        fetch('https://careful-ray-helmet.cyclic.app/update-profile', { method: "PUT", body: JSON.stringify(Object.assign(daily_updates,{_id:user._id})), headers: { 'Content-Type': 'application/json' } }).then((res)=>{
             if(res.status === 200){
                 getProfile()
             }
@@ -119,7 +119,7 @@ const Profile = () => {
             let token_key = JSON.parse(auth_token)
             console.log(token_key.token)
 
-            fetch('http://localhost:5000/profile', {
+            fetch('https://careful-ray-helmet.cyclic.app/profile', {
                 method: "GET", headers: {
                     "authorization": "Bearer " + token_key.token
                 }

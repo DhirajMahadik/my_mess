@@ -46,7 +46,7 @@ const Register = () => {
         // for (let key of Object.keys(User)) {
         //     formData.append(key, User[key]);
         // }
-        await fetch('http://localhost:5000/add-mess', {
+        await fetch('https://careful-ray-helmet.cyclic.app/add-mess', {
             method: 'POST',
             body: JSON.stringify(User),
             headers:{'Content-Type':'application/json'}
