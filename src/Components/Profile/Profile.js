@@ -75,7 +75,7 @@ const Profile = () => {
     // }
     // console.log(formData)
     setLoading(true);
-    fetch("http://localhost:5000/remove-collection-image", {
+    fetch("https://careful-ray-helmet.cyclic.app/remove-collection-image", {
       method: "POST",
       body: JSON.stringify(obj),
       headers: { "Content-Type": "application/json" },
