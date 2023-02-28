@@ -77,11 +77,11 @@ const Home = () => {
               console.log(element);
 
               // return
-           
+
               return (
-                
+
                 <div className="col-md-4">
-                  <div className="card " key={element._id} style={{ width: "18rem"}}>
+                  <div className="card " key={element._id} style={{ width: "18rem" }}>
                     <Link className="Link  " to={`/mess/${element._id}`}>
                       {/* <span style={{ color: "black", border: " solid 2px #fff" }} className="position-absolute top-3 start-100 translate-middle badge rounded-pill bg-warning">
                                 4.5
@@ -118,7 +118,7 @@ const Home = () => {
                 No mess found
               </h2>
             </div>
-          ) : <Loder/>}
+          ) : <Loder />}
         </div>
       </div>
     </HOME>
@@ -151,7 +151,23 @@ const HOME = styled.section`
   .Flex form {
     margin: auto;
     input {
-      padding: 15px 100px;
+      padding: 20px 20px;
+      background-color: #0000005e;
+      color: #fff;
+      border: solid goldenrod 2px;
+      border-radius: 20px;
+      -webkit-text-fill-color: #fff;
+      -webkit-text-fill-background-color: #000;
+      :hover{
+        padding: 20px 100px; 
+        transition: 1s;
+      }
+
+      input:-webkit-autofill{
+     background-color:#0000005e ;
+    
+}
+
     }
   }
 
