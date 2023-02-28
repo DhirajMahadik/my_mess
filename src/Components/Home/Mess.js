@@ -102,9 +102,9 @@ const Mess = () => {
            gallary.length > 0 ? gallary.map((element) => {
 
               return (
-                <div className="col-md-4 py-2">
-                  <div className="card m-auto" style={{ width: "18rem" }}>
-                    <img src={element} className="card-img-top" alt="..." style={{ height: "200px" }} />
+                <div className="col-md-3 py-2 m-auto">
+                  <div className="card m-auto  my-2" style={{ width: "18rem" , borderRadius:"20px"}}>
+                    <img src={element} className="card-img-top" alt="..." style={{ height: "200px", borderRadius:"20px" }} />
                   </div>
                 </div>
               );
@@ -123,14 +123,14 @@ export default Mess;
 
 const MESS = styled.div`
   background-color: #000;
-  padding-top: 20px;
+  /* padding-top: 20px; */
   .banner {
     height: 50vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
-    margin-bottom: 25px;
+    /* margin-bottom: 25px; */
   }
 
   .banner img {
@@ -140,9 +140,9 @@ const MESS = styled.div`
 
   .banner h3 {
     margin: auto;
-    font-size: 3rem;
+    font-size: 4rem;
     font-style: italic;
-    text-decoration: underline;
+    /* text-decoration: underline; */
     font-weight: 900;
     color: #fff;
     text-shadow: 3px 2px 2px #000;
@@ -150,7 +150,7 @@ const MESS = styled.div`
 
     text-align: center;
     padding: 15px;
-    background-color: rgb(22 21 21/50%);
+    /* background-color: rgb(22 21 21/50%); */
     /* border-radius: 20px; */
   }
 
