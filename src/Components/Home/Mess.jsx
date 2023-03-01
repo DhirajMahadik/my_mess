@@ -6,14 +6,17 @@ import { TelephoneFill, GeoAltFill } from "react-bootstrap-icons";
 const Mess = () => {
   const param = useParams();
   const [mess, setMess] = useState({});
-  const [gallary, setGallary] = useState([])
+  const [gallary, setGallary] = useState([]);
   const getMessData = async () => {
-    let data = await fetch(`${process.env.REACT_APP_API_URL}/mess/${param.id}`, {
-      method: "get",
-    });
+    let data = await fetch(
+      `${process.env.REACT_APP_API_URL}/mess/${param.id}`,
+      {
+        method: "get",
+      }
+    );
     let result = await data.json();
     setMess(result);
-    setGallary(result.photos)
+    setGallary(result.photos);
   };
 
   const banner_style = {
@@ -59,19 +62,27 @@ const Mess = () => {
             <div className="d-flex row">
               <div className="col-md-6 ">
                 <h5 className="text-warning">Lunch Time</h5>
-                <h6 className="my-2 text-center text-light">{mess.lunch_time}</h6>
+                <h6 className="my-2 text-center text-light">
+                  {mess.lunch_time}
+                </h6>
               </div>
               <div className="col-md-6 ">
                 <h5 className="text-warning">Dinner Time</h5>
-                <h6 className="my-2 text-center text-light">{mess.dinner_time}</h6>
+                <h6 className="my-2 text-center text-light">
+                  {mess.dinner_time}
+                </h6>
               </div>
               <div className="col-md-6 ">
                 <h5 className="text-warning">Lunch Price</h5>
-                <h6 className="my-2 text-center text-light">Rs. {mess.lunch_price} /-</h6>
+                <h6 className="my-2 text-center text-light">
+                  Rs. {mess.lunch_price} /-
+                </h6>
               </div>
               <div className="col-md-6 ">
                 <h5 className="text-warning">Dinner Price</h5>
-                <h6 className="my-2 text-center text-light">Rs. {mess.dinner_price} /-</h6>
+                <h6 className="my-2 text-center text-light">
+                  Rs. {mess.dinner_price} /-
+                </h6>
               </div>
             </div>
             <h3>Today's Menu</h3>
@@ -98,21 +109,27 @@ const Mess = () => {
         </div>
         <hr className="text-light" />
         <div className=" row g-2">
-          {
-           gallary.length > 0 ? gallary.map((element) => {
-
+          {gallary.length > 0 ? (
+            gallary.map((element) => {
               return (
                 <div className="col-md-3 py-2 m-auto">
-                  <div className="card m-auto  my-2" style={{ width: "18rem" , borderRadius:"20px"}}>
-                    <img src={element} className="card-img-top" alt="..." style={{ height: "200px", borderRadius:"20px" }} />
+                  <div
+                    className="card m-auto  my-2"
+                    style={{ width: "18rem", borderRadius: "20px" }}
+                  >
+                    <img
+                      src={element}
+                      className="card-img-top"
+                      alt="..."
+                      style={{ height: "200px", borderRadius: "20px" }}
+                    />
                   </div>
                 </div>
               );
-
-
             })
-              : <h3 className="text-center my-4"> Pictures not available</h3>
-          }
+          ) : (
+            <h3 className="text-center my-4"> Pictures not available</h3>
+          )}
         </div>
       </div>
     </MESS>
@@ -120,5 +137,3 @@ const Mess = () => {
 };
 
 export default Mess;
-
-

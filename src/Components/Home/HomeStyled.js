@@ -1,9 +1,8 @@
-import styled from "styled-components"; 
+import styled from "styled-components";
 
- export const HOME = styled.section`
+export const HOME = styled.section`
   background-color: #000;
   padding-top: 10px;
-  /* height: 100vh; */
   .Link {
     width: 100%;
     text-decoration: none;
@@ -11,9 +10,7 @@ import styled from "styled-components";
   }
 
   .Flex {
-    /* background-image: url("https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020"); */
-    background-image:url("https://b.zmtcdn.com/data/pictures/8/18894888/479fef6a7a652d56a755e0d4bcf2e90e.jpg");
-    /* background-image:url("http://malbecho.net/cart/php/store/static_uploads/B2_06_10_2016_11_27_49.png"); */
+    background-image: url("https://b.zmtcdn.com/data/pictures/8/18894888/479fef6a7a652d56a755e0d4bcf2e90e.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -45,19 +42,16 @@ import styled from "styled-components";
   }
 
   .card {
-    /* width: 18rem; */
-    margin: 20px  auto;
+    margin: 20px auto;
     padding: 0;
     border-radius: 50px 0;
     background-color: #e0e0e0;
     height: 300px;
-    /* border: none; */
-    :hover{
-        transform: scale(1.1);
-        transition: .5s;
+    :hover {
+      transform: scale(1.1);
+      transition: 0.5s;
     }
   }
-
 
   .card-body {
     position: relative;
@@ -73,7 +67,6 @@ import styled from "styled-components";
   .container {
     margin: auto;
     padding: 20px;
-    /* height: 100vh; */
   }
 
   .card-text {
@@ -100,12 +93,6 @@ import styled from "styled-components";
   span {
     display: block;
   }
-
-  /* form{
-        width: fit-content;
-        padding-top: 30px;
-        margin: auto;
-    } */
 
   form input {
     height: 30px;

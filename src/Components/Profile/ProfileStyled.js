@@ -1,12 +1,9 @@
 import styled from "styled-components";
 
- const Profile = styled.div`
-  /* background-color: #000; */
+const Profile = styled.div`
   background-color: #6a8297;
 
   .container {
-    /* background-color: aliceblue; */
-
     display: flex;
     flex-direction: column;
     .loader {
@@ -24,9 +21,6 @@ import styled from "styled-components";
 
   .image {
     display: flex;
-    /* flex-direction: column; */
-    /* margin: auto; */
-    /* background-image: url("https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020"); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -36,7 +30,6 @@ import styled from "styled-components";
   }
 
   .image form {
-    /* width: 500px; */
     margin: auto;
     text-align: center;
     background-color: rgba(0 0 0/50%);
@@ -57,21 +50,18 @@ import styled from "styled-components";
   }
 
   .image label {
-    /* font-size: 1rem; */
     font-weight: bold;
     padding: 10px;
     color: #fff;
   }
 
   .image img {
-    /* width: 100vw; */
     width: -webkit-fill-available;
     margin: auto;
     border-radius: 50px;
   }
 
   .Deatails {
-    /* background-color: #b0dada; */
     background-color: #d2f1f1;
     border-radius: 20px;
   }
@@ -98,12 +88,6 @@ import styled from "styled-components";
     background-color: #b7dce3;
     border-radius: 5px;
     text-align: center;
-  }
-
-  .Deatails h4 {
-    /* border-bottom: solid #000 1px; */
-    /* text-align: center; */
-    /* border-top: solid #000 1px; */
   }
 
   .edit {
@@ -136,14 +120,11 @@ import styled from "styled-components";
 
   .upload-label {
     margin: auto;
-    /* color: #fff; */
+
     padding: 5px 10px;
     cursor: pointer;
-    /* font-weight: bold; */
-    /* border: solid yellowgreen 1px; */
-    /* background-color: red; */
     border-radius: 20px;
   }
 `;
 
-export default Profile
+export default Profile;

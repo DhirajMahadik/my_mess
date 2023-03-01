@@ -1,83 +1,77 @@
 import styled from "styled-components";
 
 export const REGISTER_LOGIN = styled.div`
-display: flex;
-padding: 20px;
-background-color: #000000b8;
-height: 100vh;
+  display: flex;
+  padding: 20px;
+  background-color: #000000b8;
+  height: 100vh;
 
-button{
+  button {
     margin: 20px auto;
-}
+  }
 
-form{
+  form {
     color: #fff;
     width: 30vw;
-    margin:auto;
-    /* background-color: #1a1818; */
+    margin: auto;
     background-color: #ffffff4f;
     padding: 0 10px;
     border-radius: 10px;
-}
+  }
 
-form label{
+  form label {
     font-weight: bold;
-}
+  }
 
-form input , select{
+  form input,
+  select {
     background-color: #1a1818;
     color: #fff;
     border: none;
-}
+  }
 
-form input:focus{
+  form input:focus {
     background-color: #1a1818;
     color: #fff;
-}
+  }
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:active,
-input:-webkit-autofill:focus {
-
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:active,
+  input:-webkit-autofill:focus {
     transition: background-color 5000s ease-in-out 0s;
     color: #fff !important;
     -webkit-text-fill-color: #fff !important;
-}
+  }
 
-.form-check-label{
-    text-decoration:underline ;
+  .form-check-label {
+    text-decoration: underline;
     cursor: pointer;
-}
+  }
 
-form h2{
+  form h2 {
     text-align: center;
     color: gold;
     font-weight: 800;
-    /* padding: 15px; */
+  }
 
-}
-
-form h1{
+  form h1 {
     text-align: center;
     color: gold;
     font-weight: 800;
-}
+  }
 
-@media (max-width: 767px){
-    /* height: 100%; */
-
-    form{
-        width: 100%;
+  @media (max-width: 767px) {
+    form {
+      width: 100%;
     }
-}
+  }
 
-@media (max-height: 600px){
+  @media (max-height: 600px) {
     height: 100%;
-}
+  }
 
-@media (min-height: 800px){
+  @media (min-height: 800px) {
     height: 100vh;
-}
-
+  }
 `;

@@ -1,4 +1,4 @@
-import PROFILE from './ProfileStyled'
+import PROFILE from "./ProfileStyled";
 import { PencilSquare } from "react-bootstrap-icons";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -8,23 +8,9 @@ import { ToastContainer, toast } from "react-toastify";
 const Profile = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState({});
-//   const [gallary, setGallary] = useState([])
   const [loading, setLoading] = useState(false);
   const [banner_loading, setBanner_loading] = useState(false);
-  // const [newData, setNewData] = useState({
-  //     messname:user.messname, messtype:"", address:"", location:"", phone:"", email:"", mess_open:"", mess_closs:""
-  // })
-
-  const [daily_updates, set_daily_updates] = useState({
-    // lunch_time: "",
-    // lunch_price: "",
-    // dinner_time: "",
-    // dinner_price: "",
-    // lunch_menu: "",
-    // dinner_menu: "",
-  });
-
-  // const [image_collection, setImage_collection] = useState()
+  const [daily_updates, set_daily_updates] = useState({});
 
   const addImage_banner = (e) => {
     let file = e.target.files[0];
@@ -38,7 +24,6 @@ const Profile = () => {
     fetch("http://localhost:5000/add-image", {
       method: "POST",
       body: formData,
-      // headers:{'Content-Type':'application/json'}
     }).then((res) => {
       getProfile();
       setBanner_loading(false);
@@ -58,7 +43,6 @@ const Profile = () => {
     fetch("https://careful-ray-helmet.cyclic.app/add-collection-image", {
       method: "POST",
       body: formData,
-      // headers:{'Content-Type':'application/json'}
     }).then((res) => {
       if (res.status === 200) {
         getProfile();
@@ -69,11 +53,7 @@ const Profile = () => {
 
   const removeImage_collection = (url) => {
     let obj = { _id: user._id, previous: url };
-    // let formData = new FormData()
-    // for (let key of Object.keys(obj)) {
-    //     formData.append(key, obj[key]);
-    // }
-    // console.log(formData)
+
     setLoading(true);
     fetch(`${process.env.REACT_APP_API_URL}/remove-collection-image`, {
       method: "POST",
@@ -81,7 +61,6 @@ const Profile = () => {
       headers: { "Content-Type": "application/json" },
     }).then((res) => {
       if (res.status === 200) {
-
         getProfile();
         setLoading(false);
       }
@@ -89,7 +68,6 @@ const Profile = () => {
   };
 
   const onChangeHandler = (e) => {
-    // setNewData({...newData, [e.target.name]:e.target.value})
     set_daily_updates({ ...daily_updates, [e.target.name]: e.target.value });
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -111,7 +89,7 @@ const Profile = () => {
   const updateDailyUpdates = () => {
     fetch(`${process.env.REACT_APP_API_URL}/update-profile`, {
       method: "PUT",
-      // body: JSON.stringify(Object.assign(daily_updates, { _id: user._id })),
+
       body: JSON.stringify(user),
       headers: { "Content-Type": "application/json" },
     }).then((res) => {
@@ -152,7 +130,7 @@ const Profile = () => {
             navigate("/login");
           } else {
             setUser(res1);
-            // setGallary(res1.photos)
+
             console.log(res1);
           }
         })
@@ -180,7 +158,6 @@ const Profile = () => {
     <PROFILE>
       <div className="container">
         <div className="image py-3" style={image_style}>
-          {/* <img className="py-3" src="https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020" alt="" /> */}
           {!banner_loading ? (
             <form>
               <h2 htmlFor="banner">Update your mess banner...</h2>
@@ -257,7 +234,8 @@ const Profile = () => {
                         value={user.messtype}
                         id="type"
                         className="form-select"
-                      ><option value={"Not selected"}>Choose...</option>
+                      >
+                        <option value={"Not selected"}>Choose...</option>
                         <option value={"Veg/Non-Veg"}>Veg / Non-veg</option>
                         <option value={" Only Veg"}>Only Veg</option>
                         <option value={" Only Non-Veg"}>Only Non-Veg</option>
@@ -355,7 +333,6 @@ const Profile = () => {
                     </div>
                   </div>
                   <div className="modal-footer">
-                    {/* <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Close</button> */}
                     <button
                       type="button"
                       onClick={updateProfileInfo}
@@ -390,11 +367,6 @@ const Profile = () => {
               {user.address ? user.address : "Please update your address****"}
             </p>
           </div>
-
-          {/* <div className="col-md-6">
-                        <h4> Location link </h4>
-                        <p></p>
-                    </div> */}
 
           <div className="col-md-6">
             <h4> Phone no </h4>
@@ -520,14 +492,6 @@ const Profile = () => {
               Update
             </button>
           </div>
-
-          {/* <div className="col-md-3">
-                    Friday <input type="" name="" value=""/>
-                    </div>
-
-                    <div className="col-md-3">
-                    Saturday <input type="" name="" value=""/>
-                    </div> */}
         </div>
 
         <h2>Gallary</h2>
@@ -535,7 +499,7 @@ const Profile = () => {
         <div className=" gallary row g-3">
           {!loading ? (
             user.photos ? (
-                user.photos.map((element) => {
+              user.photos.map((element) => {
                 return (
                   <div className="col-md-4 py-2">
                     <div className="card " style={{ width: "18rem" }}>
@@ -579,5 +543,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
-

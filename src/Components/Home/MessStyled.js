@@ -1,16 +1,14 @@
 import styled from "styled-components";
 
- 
 export const MESS = styled.div`
   background-color: #000;
-  /* padding-top: 20px; */
+
   .banner {
     height: 50vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
-    /* margin-bottom: 25px; */
   }
 
   .banner img {
@@ -22,16 +20,13 @@ export const MESS = styled.div`
     margin: auto;
     font-size: 4rem;
     font-style: italic;
-    /* text-decoration: underline; */
+
     font-weight: 900;
     color: #fff;
     text-shadow: 3px 2px 2px #000;
-    /* width: 50vw; */
 
     text-align: center;
     padding: 15px;
-    /* background-color: rgb(22 21 21/50%); */
-    /* border-radius: 20px; */
   }
 
   .container {
@@ -68,7 +63,6 @@ export const MESS = styled.div`
   a {
     width: 100%;
     margin: 10px auto;
-    /* padding: 10px; */
   }
 
   .icon {
