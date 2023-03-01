@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const HOME = styled.section`
   background-color: #000;
-  padding-top: 10px;
   .Link {
     width: 100%;
     text-decoration: none;
