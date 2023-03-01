@@ -3,7 +3,7 @@ import styled from "styled-components"
 const Footer = () =>{
     return(
         <FOOTER>
-        <h6>Copyright © 2022 mymess.com  <a className="mx-2" target="_blank" href="https://drive.google.com/file/d/1u7D0I23uyEj4BeB2NsUDTXbl3mqsGBMQ/view">  Get APP</a></h6>
+        <h6>Copyright © 2022 mymess.com  <a className="mx-2" target="_blank" rel="noreferrer" href="https://drive.google.com/file/d/1u7D0I23uyEj4BeB2NsUDTXbl3mqsGBMQ/view">  Get APP</a></h6>
         </FOOTER>
     )
 }
