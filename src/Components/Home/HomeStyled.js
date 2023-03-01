@@ -29,6 +29,7 @@ export const HOME = styled.section`
       -webkit-text-fill-color: #fff;
       :hover{
         padding: 20px 100px;
+        text-align: center;
         transition: .7s;
       }
     }
