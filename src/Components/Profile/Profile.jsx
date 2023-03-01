@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import PROFILE from './ProfileStyled'
 import { PencilSquare } from "react-bootstrap-icons";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -16,12 +16,12 @@ const Profile = () => {
   // })
 
   const [daily_updates, set_daily_updates] = useState({
-    lunch_time: "",
-    lunch_price: "",
-    dinner_time: "",
-    dinner_price: "",
-    lunch_menu: "",
-    dinner_menu: "",
+    // lunch_time: "",
+    // lunch_price: "",
+    // dinner_time: "",
+    // dinner_price: "",
+    // lunch_menu: "",
+    // dinner_menu: "",
   });
 
   // const [image_collection, setImage_collection] = useState()
@@ -75,7 +75,7 @@ const Profile = () => {
     // }
     // console.log(formData)
     setLoading(true);
-    fetch("https://careful-ray-helmet.cyclic.app/remove-collection-image", {
+    fetch(`${process.env.REACT_APP_API_URL}/remove-collection-image`, {
       method: "POST",
       body: JSON.stringify(obj),
       headers: { "Content-Type": "application/json" },
@@ -96,7 +96,7 @@ const Profile = () => {
 
   const updateProfileInfo = () => {
     console.log(user);
-    fetch("https://careful-ray-helmet.cyclic.app/update-profile", {
+    fetch(`${process.env.REACT_APP_API_URL}/update-profile`, {
       method: "PUT",
       body: JSON.stringify(user),
       headers: { "Content-Type": "application/json" },
@@ -109,9 +109,10 @@ const Profile = () => {
   };
 
   const updateDailyUpdates = () => {
-    fetch("https://careful-ray-helmet.cyclic.app/update-profile", {
+    fetch(`${process.env.REACT_APP_API_URL}/update-profile`, {
       method: "PUT",
-      body: JSON.stringify(Object.assign(daily_updates, { _id: user._id })),
+      // body: JSON.stringify(Object.assign(daily_updates, { _id: user._id })),
+      body: JSON.stringify(user),
       headers: { "Content-Type": "application/json" },
     }).then((res) => {
       if (res.status === 200) {
@@ -136,7 +137,7 @@ const Profile = () => {
       let token_key = JSON.parse(auth_token);
       console.log(token_key.token);
 
-      fetch("https://careful-ray-helmet.cyclic.app/profile", {
+      fetch(`${process.env.REACT_APP_API_URL}/profile`, {
         method: "GET",
         headers: {
           authorization: "Bearer " + token_key.token,
@@ -256,7 +257,7 @@ const Profile = () => {
                         value={user.messtype}
                         id="type"
                         className="form-select"
-                      >
+                      ><option value={"Not selected"}>Choose...</option>
                         <option value={"Veg/Non-Veg"}>Veg / Non-veg</option>
                         <option value={" Only Veg"}>Only Veg</option>
                         <option value={" Only Non-Veg"}>Only Non-Veg</option>
@@ -579,148 +580,4 @@ const Profile = () => {
 
 export default Profile;
 
-const PROFILE = styled.div`
-  /* background-color: #000; */
-  background-color: #6a8297;
 
-  .container {
-    /* background-color: aliceblue; */
-
-    display: flex;
-    flex-direction: column;
-    .loader {
-      position: absolute;
-    }
-  }
-
-  .container h3 {
-    text-align: center;
-  }
-
-  .container h2 {
-    text-align: center;
-  }
-
-  .image {
-    display: flex;
-    /* flex-direction: column; */
-    /* margin: auto; */
-    /* background-image: url("https://cdnkdc.azureedge.net/cdprod/Media/global/pages/kerrydigest/asian-trends-2020"); */
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 400px;
-    margin-top: 20px;
-    border-radius: 20px;
-  }
-
-  .image form {
-    /* width: 500px; */
-    margin: auto;
-    text-align: center;
-    background-color: rgba(0 0 0/50%);
-    padding: 15px;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    h2 {
-      color: #fff;
-      font-weight: 800;
-    }
-  }
-
-  .image input {
-    border-radius: 20px;
-    color: #fff;
-    visibility: hidden;
-  }
-
-  .image label {
-    /* font-size: 1rem; */
-    font-weight: bold;
-    padding: 10px;
-    color: #fff;
-  }
-
-  .image img {
-    /* width: 100vw; */
-    width: -webkit-fill-available;
-    margin: auto;
-    border-radius: 50px;
-  }
-
-  .Deatails {
-    /* background-color: #b0dada; */
-    background-color: #d2f1f1;
-    border-radius: 20px;
-  }
-
-  .Deatails h4,
-  p {
-    padding: 0;
-    margin: 2px;
-  }
-
-  input {
-    border: none;
-  }
-
-  input:focus,
-  textarea:focus {
-    border: none;
-    box-shadow: none;
-  }
-
-  .Deatails p {
-    padding: 5px 5px 5px 10px;
-    color: #000;
-    background-color: #b7dce3;
-    border-radius: 5px;
-    text-align: center;
-  }
-
-  .Deatails h4 {
-    /* border-bottom: solid #000 1px; */
-    /* text-align: center; */
-    /* border-top: solid #000 1px; */
-  }
-
-  .edit {
-    display: flex;
-    justify-content: end;
-  }
-
-  .edit samp {
-    cursor: pointer;
-  }
-
-  .modal-body input {
-    border: solid 1px;
-  }
-
-  .gallary .card {
-    margin: auto;
-  }
-
-  .gallary .card-body {
-    position: absolute;
-    bottom: 0;
-  }
-
-  .upload-photo {
-    opacity: 0;
-    position: absolute;
-    z-index: -1;
-  }
-
-  .upload-label {
-    margin: auto;
-    /* color: #fff; */
-    padding: 5px 10px;
-    cursor: pointer;
-    /* font-weight: bold; */
-    /* border: solid yellowgreen 1px; */
-    /* background-color: red; */
-    border-radius: 20px;
-  }
-`;

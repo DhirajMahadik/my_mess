@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import styled from "styled-components"
+import { Header } from "./NavbarStyled";
 import {useNavigate} from 'react-router-dom'
 
 const Navbar = () => {
@@ -54,30 +54,3 @@ const Navbar = () => {
 
 export default Navbar
 
-const Header = styled.header`
-
-
-span{
-  color: red;
-  font-weight: 700;
-}
-
-.navbar-brand{
-  font-style: italic;
-  font-weight: 900;
-  margin-left: 20px;
-}
-
-.navbar-toggler{
-  border: none;
-}
-
-.collapse{
-  justify-content: flex-end;
-  margin-right: 30px;
-}
-
-.navbar-toggler:focus{
-  box-shadow: none;
-}
-`;

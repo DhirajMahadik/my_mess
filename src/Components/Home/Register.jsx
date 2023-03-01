@@ -1,5 +1,5 @@
 import { useState } from "react"
-import styled from "styled-components"
+import { REGISTER_LOGIN } from "./RegistrationStyled";
 import { ToastContainer, toast } from 'react-toastify';
 import { ArrowLeftCircleFill } from 'react-bootstrap-icons'
 import { useNavigate } from 'react-router-dom'
@@ -46,7 +46,7 @@ const Register = () => {
         // for (let key of Object.keys(User)) {
         //     formData.append(key, User[key]);
         // }
-        await fetch('https://careful-ray-helmet.cyclic.app/add-mess', {
+        await fetch(`${process.env.REACT_APP_API_URL}/add-mess`, {
             method: 'POST',
             body: JSON.stringify(User),
             headers:{'Content-Type':'application/json'}
@@ -192,85 +192,5 @@ const Register = () => {
 
 export default Register
 
-export const REGISTER_LOGIN = styled.div`
-display: flex;
-padding: 20px;
-background-color: #000000b8;
-height: 100vh;
 
-button{
-    margin: 20px auto;
-}
-
-form{
-    color: #fff;
-    width: 30vw;
-    margin:auto;
-    /* background-color: #1a1818; */
-    background-color: #ffffff4f;
-    padding: 0 10px;
-    border-radius: 10px;
-}
-
-form label{
-    font-weight: bold;
-}
-
-form input , select{
-    background-color: #1a1818;
-    color: #fff;
-    border: none;
-}
-
-form input:focus{
-    background-color: #1a1818;
-    color: #fff;
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:active,
-input:-webkit-autofill:focus {
-
-    transition: background-color 5000s ease-in-out 0s;
-    color: #fff !important;
-    -webkit-text-fill-color: #fff !important;
-}
-
-.form-check-label{
-    text-decoration:underline ;
-    cursor: pointer;
-}
-
-form h2{
-    text-align: center;
-    color: gold;
-    font-weight: 800;
-    /* padding: 15px; */
-
-}
-
-form h1{
-    text-align: center;
-    color: gold;
-    font-weight: 800;
-}
-
-@media (max-width: 767px){
-    /* height: 100%; */
-
-    form{
-        width: 100%;
-    }
-}
-
-@media (max-height: 600px){
-    height: 100%;
-}
-
-@media (min-height: 800px){
-    height: 100vh;
-}
-
-`;
 
