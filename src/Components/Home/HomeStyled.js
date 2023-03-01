@@ -21,7 +21,17 @@ export const HOME = styled.section`
   .Flex form {
     margin: auto;
     input {
-      padding: 15px 100px;
+      padding: 20px 0px;
+      padding: 20px 20px;
+      border: solid goldenrod 2px;
+      border-radius: 20px;
+      background-color: #00000061;
+      color: #fff;
+      -webkit-text-fill-color: #fff;
+      :hover{
+        padding: 20px 100px;
+        transition: .7s;
+      }
     }
   }
 
