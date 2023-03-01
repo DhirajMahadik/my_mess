@@ -2,6 +2,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
+import 'dotenv'
 import Footer from "./Components/Footer/Footer";
 import Navbar from "./Components/Header/Navbar";
 import Home from "./Components/Home/Home";

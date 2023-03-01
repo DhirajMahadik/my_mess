@@ -12,7 +12,7 @@ const Home = () => {
 
   const GetData = async () => {
     setLoading(true);
-    let data = await fetch(process.env.REACT_APP_API_URL, {
+    let data = await fetch('https://careful-ray-helmet.cyclic.app/', {
       method: "get",
     });
     let result = await data.json();
