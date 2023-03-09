@@ -21,7 +21,7 @@ const Profile = () => {
     }
     console.log(formData);
     setBanner_loading(true);
-    fetch("http://localhost:5000/add-image", {
+    fetch("https://careful-ray-helmet.cyclic.app/add-image", {
       method: "POST",
       body: formData,
     }).then((res) => {
@@ -168,13 +168,16 @@ const Profile = () => {
                 onChange={addImage_banner}
                 type="file"
               />
+              {/* <div className="d-flex"> */}
               <label
                 type="button"
                 htmlFor="banner"
-                className="btn btn-sm btn-warning"
+                className="btn btn-sm btn-warning m-auto"
               >
                 Update
               </label>
+              {/* </div> */}
+              
             </form>
           ) : (
             <Loder />
@@ -502,7 +505,7 @@ const Profile = () => {
               user.photos.map((element) => {
                 return (
                   <div className="col-md-4 py-2">
-                    <div className="card " style={{ width: "18rem" }}>
+                    <div className="card ">
                       <img src={element} className="card-img-top" alt="..." />
                       <div className="card-body position-absulute">
                         <button

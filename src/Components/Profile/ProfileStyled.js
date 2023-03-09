@@ -30,23 +30,36 @@ const Profile = styled.div`
   }
 
   .image form {
-    margin: auto;
+    margin: auto ;
     text-align: center;
     background-color: rgba(0 0 0/50%);
     padding: 15px;
     border-radius: 20px;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     h2 {
       color: #fff;
-      font-weight: 800;
+      text-align: center;
     }
   }
+
+  @media screen and (max-width: 368px) {
+    .image form {
+     
+      h2 {
+        margin: auto;
+      /* color: #000; */
+      text-align: center;
+    }
+    }
+}
 
   .image input {
     border-radius: 20px;
     color: #fff;
     visibility: hidden;
+    width: 0px;
   }
 
   .image label {
