@@ -45,7 +45,7 @@ const Mess = () => {
               href={`tel:+91-${mess.phone}`}
               className="btn btn-sm btn-success"
             >
-              {" "}
+            
               <TelephoneFill className="icon" /> Call now
             </a>
             <a
@@ -53,7 +53,7 @@ const Mess = () => {
               href={mess.location}
               className="btn btn-sm btn-danger"
             >
-              {" "}
+              
               <GeoAltFill className="icon" /> Get direction
             </a>
           </div>
