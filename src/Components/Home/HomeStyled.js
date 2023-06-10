@@ -77,6 +77,11 @@ export const HOME = styled.section`
   .container {
     margin: auto;
     padding: 20px;
+    height: 850px;
+    overflow: scroll;
+    ::-webkit-scrollbar{
+      display: none;
+    }
   }
 
   .card-text {

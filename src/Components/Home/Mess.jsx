@@ -20,7 +20,7 @@ const Mess = () => {
   };
 
   const banner_style = {
-    backgroundImage: `url(${mess.image})`,
+    backgroundImage: `url(${mess.image ? mess.image: "https://i0.wp.com/stanzaliving.wpcomstaging.com/wp-content/uploads/2022/04/95e6a-restaurants-vijayawada.jpg?fit=1000%2C667&ssl=1"})`,
   };
 
   useEffect(() => {

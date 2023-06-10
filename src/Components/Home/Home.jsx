@@ -80,7 +80,7 @@ const Home = () => {
                     >
                       <Link className="Link  " to={`/mess/${element._id}`}>
                         <img
-                          src={element.image}
+                          src={element.image ?element.image : element.location}
                           className="card-img-top"
                           alt="..."
                         />
@@ -92,7 +92,7 @@ const Home = () => {
                           <span>Close : {element.mess_close}</span>
                           <span>
                             {" "}
-                            <GeoAltFill /> {element.address}
+                            <GeoAltFill /> {element.address ? element.address.slice(0, 40) + "...": "Address not found"}
                           </span>
                         </div>
                       </Link>
