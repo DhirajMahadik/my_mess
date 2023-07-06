@@ -41,7 +41,7 @@ export const HOME = styled.section`
 
   .Flex form h1 {
     font-size: 4rem;
-    font-family: cursive;
+    /* font-family: cursive; */
     color: #fff;
     font-weight: 900;
     font-style: italic;
@@ -54,9 +54,10 @@ export const HOME = styled.section`
   .card {
     margin: 20px auto;
     padding: 0;
-    border-radius: 50px 0;
+    border-radius: 20px;
     background-color: #e0e0e0;
     height: 300px;
+    
     :hover {
       transform: scale(1.1);
       transition: 0.5s;
@@ -67,7 +68,7 @@ export const HOME = styled.section`
     position: relative;
     margin-top: 123px;
     background-color: #e0e0e0;
-    border-radius: 50px 0px 50px 0px;
+    border-radius: 50px 0px 20px 20px;
   }
 
   button {
@@ -91,7 +92,7 @@ export const HOME = styled.section`
   img {
     height: 170px;
     position: absolute;
-    border-radius: 50px 0 0 0;
+    border-radius: 20px;
   }
 
   hr {
@@ -119,5 +120,31 @@ export const HOME = styled.section`
     .Container {
       height: 100%;
     }
+
+    .card{
+      /* height: 150px;
+      width: 150px;
+      margin: 70px 10px; */
+
+    }
+
+    .card-body {
+      height: 160px;
+      
+      h5{
+        font-size: 15px;
+      }
+
+      span{
+        font-size: 12px;
+      }
+    
+    }
+    .col-md-3{
+      width: 175px;
+      margin: 10px auto;
+
+    }
+
   }
 `;

@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 export const Header = styled.header`
-
+position: fixed;
+width: -webkit-fill-available;
+z-index: 1;
 
 span{
   color: red;

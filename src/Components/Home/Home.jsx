@@ -63,7 +63,7 @@ const Home = () => {
       <div className="container py-3">
         {/* <hr /> */}
         <h4>{!messList.length < 1 ? "You can check following results" : ""}</h4>
-        <div className="row g-3">
+        <div className="row">
           {!loading ? (
             !messList.length < 1 ? (
               messList.map((element) => {
@@ -72,11 +72,11 @@ const Home = () => {
                 // return
 
                 return (
-                  <div className="col-md-4">
+                  <div className="col-md-3">
                     <div
                       className="card "
                       key={element._id}
-                      style={{ width: "18rem" }}
+                    
                     >
                       <Link className="Link  " to={`/mess/${element._id}`}>
                         <img
@@ -88,11 +88,11 @@ const Home = () => {
                         <div className="card-body">
                           <h5 className="card-title ">{element.messname}</h5>
                           <span className="card-text">{element.messtype}</span>
-                          <span>Open : {element.mess_open}</span>
-                          <span>Close : {element.mess_close}</span>
+                          <span>Open : {element.mess_open ? element.mess_open: "Not Provided" }</span>
+                          <span>Close : {element.mess_close ?element.mess_close: "Not Provided"}</span>
                           <span>
                             {" "}
-                            <GeoAltFill /> {element.address ? element.address.slice(0, 40) + "...": "Address not found"}
+                            <GeoAltFill /> {element.address ? element.address.slice(0, 20) + "...": "Address not found"}
                           </span>
                         </div>
                       </Link>

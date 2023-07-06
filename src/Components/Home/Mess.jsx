@@ -40,10 +40,10 @@ const Mess = () => {
             <h3>Contact</h3>
 
             <p>{mess.address}</p>
-            <h5> Phone : {mess.phone}</h5>
+            <h5> Phone : {mess.phone? mess.phone:"NOT PROVIDED"}</h5>
             <a
-              href={`tel:+91-${mess.phone}`}
-              className="btn btn-sm btn-success"
+              href={`tel:+91-${mess.phone }`}
+              className={`btn btn-sm btn-success ${mess.phone? "":"disabled"}`}
             >
             
               <TelephoneFill className="icon" /> Call now
@@ -51,7 +51,7 @@ const Mess = () => {
             <a
               target="blank"
               href={mess.location}
-              className="btn btn-sm btn-danger"
+              className= {`btn btn-sm btn-danger`}
             >
               
               <GeoAltFill className="icon" /> Get direction
@@ -63,25 +63,25 @@ const Mess = () => {
               <div className="col-md-6 ">
                 <h5 className="text-warning">Lunch Time</h5>
                 <h6 className="my-2 text-center text-light">
-                  {mess.lunch_time}
+                  {mess.lunch_time ? mess.lunch_time :"Not Provided"}
                 </h6>
               </div>
               <div className="col-md-6 ">
                 <h5 className="text-warning">Dinner Time</h5>
                 <h6 className="my-2 text-center text-light">
-                  {mess.dinner_time}
+                  {mess.dinner_time ? mess.dinner_time:"Not Provided"}
                 </h6>
               </div>
               <div className="col-md-6 ">
                 <h5 className="text-warning">Lunch Price</h5>
                 <h6 className="my-2 text-center text-light">
-                  Rs. {mess.lunch_price} /-
+                  Rs. {mess.lunch_price  ? mess.lunch_price+" /-":"Not Provided"} 
                 </h6>
               </div>
               <div className="col-md-6 ">
                 <h5 className="text-warning">Dinner Price</h5>
                 <h6 className="my-2 text-center text-light">
-                  Rs. {mess.dinner_price} /-
+                  Rs. {mess.dinner_price  ? mess.dinner_price+ " /-":"Not Provided"} 
                 </h6>
               </div>
             </div>
@@ -90,13 +90,13 @@ const Mess = () => {
               <div className="col-md-6 ">
                 <h5 className="text-warning">Lunch Menu</h5>
                 <h6 className="my-2 text-center text-light">
-                  {mess.lunch_menu}
+                  {mess.lunch_menu ? mess.lunch_menu:"Not Provided"}
                 </h6>
               </div>
               <div className="col-md-6 ">
                 <h5 className="text-warning">Dinner Menu</h5>
                 <h6 className="my-2 text-center text-light">
-                  {mess.dinner_menu}
+                  {mess.dinner_menu ? mess.dinner_menu:"Not Provided"}
                 </h6>
               </div>
             </div>
