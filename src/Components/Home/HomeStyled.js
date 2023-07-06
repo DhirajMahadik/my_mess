@@ -122,9 +122,7 @@ export const HOME = styled.section`
     }
 
     .card{
-      /* height: 150px;
-      width: 150px;
-      margin: 70px 10px; */
+     margin: auto;
 
     }
 
@@ -145,6 +143,11 @@ export const HOME = styled.section`
       margin: 10px auto;
 
     }
+
+    .row > * {
+    padding: 0 !important;
+  
+}
 
   }
 `;
